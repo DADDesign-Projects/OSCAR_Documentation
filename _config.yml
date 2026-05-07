@@ -28,3 +28,5 @@ callouts:
     color: purple
   warning:
     color: red
+  tip:
+    color: green

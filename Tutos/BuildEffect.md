@@ -4,7 +4,7 @@ parent: Tutorials
 layout: default
 nav_order: 2
 ---
-
+{: .text-blue-300 }
 # How to Compile and Load an Effect
 
 {: .text-blue-200 }
@@ -16,13 +16,13 @@ This tutorial explains how to compile an effect and then load it onto the OSCAR 
 
 * A working OSCAR pedal (hardware platform) with compatible 12V power supply to download and run the software.
 
-* cloned the following repositories and configured the workspace in STM32CubeIDE :
+* Cloned the following repositories and configured the workspace in STM32CubeIDE :
 
-  * [Software\_OSCAR\_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01)
+  * [Software_OSCAR_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01)
 
-  * \[OSCAR\_P01\_FLasherLoader]\(<https://github.com/>  DADDesign-Projects/OSCAR\_P01\_FLasherLoader)
+  * [OSCAR_P01_FLasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FLasherLoader)  
 
-
+  >{: .tip }
   > See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)
 
 * If you want to trace code execution and debug the firmware, an ST-Link (or compatible clone) is required (not use in this tuto).
@@ -32,7 +32,8 @@ To program the software into the STM32H743 internal memory, you can use either:
 * An ST-Link programmer/debugger
 
 * The USB DFU protocol
-{: .warning }
+  
+>{: .warning }
 > **Note:**\
 > The flasher client currently only works on Windows.\
 > Collaboration is welcome to help port the `FlasherServer` utility to Linux or macOS.\
