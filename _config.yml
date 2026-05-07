@@ -26,3 +26,5 @@ callouts_level: quiet  # ou loud pour plus de contraste
 callouts:
   note:
     color: purple
+  warning:
+    color: red
