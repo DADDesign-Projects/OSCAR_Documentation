@@ -6,7 +6,7 @@ nav_order: 2
 ---
 
 {: .text-blue-100 }
-# How to Compile and Load an Effect
+# **How to Compile and Load an Effect**
 
 {: .text-blue-300 }
 This tutorial explains how to compile an effect and then load it onto the OSCAR hardware platform.
