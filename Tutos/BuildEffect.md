@@ -4,10 +4,11 @@ parent: Tutorials
 layout: default
 nav_order: 2
 ---
-{: .text-blue-300 }
+
+{: .text-blue-100 }
 # How to Compile and Load an Effect
 
-{: .text-blue-200 }
+{: .text-blue-300 }
 This tutorial explains how to compile an effect and then load it onto the OSCAR hardware platform.
 
 ## Prerequisites
@@ -23,14 +24,14 @@ This tutorial explains how to compile an effect and then load it onto the OSCAR 
   * [OSCAR_P01_FLasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FLasherLoader)  
 
   >{: .tip }
+  > **Tip:**\
   > See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)
 
 * If you want to trace code execution and debug the firmware, an ST-Link (or compatible clone) is required (not use in this tuto).
 
 To program the software into the STM32H743 internal memory, you can use either:
 
-* An ST-Link programmer/debugger
-
+* An ST-Link programmer
 * The USB DFU protocol
   
 >{: .warning }
