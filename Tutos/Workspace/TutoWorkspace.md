@@ -4,10 +4,10 @@ parent: Tutorials
 layout: default
 nav_order: 1
 ---
+{: .text-blue-100 }
+# **How to Create Your Workspace**
 
-# How to Create Your Workspace
-
-{: .text-blue-200 }
+{: .text-blue-300 }
 This tutorial explains how to clone and set up the repositories required to develop audio effects with the OSCAR Workshop environment.
 
 > {: .note }

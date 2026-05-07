@@ -23,9 +23,8 @@ This tutorial explains how to compile an effect and then load it onto the OSCAR 
 
   * [OSCAR_P01_FLasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FLasherLoader)  
 
-  >{: .tip }
-  > **Tip:**\
-  > See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)
+>{: .note }
+> See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)
 
 * If you want to trace code execution and debug the firmware, an ST-Link (or compatible clone) is required (not use in this tuto).
 
