@@ -1,0 +1,28 @@
+# Définition du thème
+remote_theme: just-the-docs/just-the-docs
+
+# Configuration générale de votre site
+title: "OSCAR Documentation"
+description: "Documentation du projet OSCAR"
+baseurl: "/OSCAR_Documentation"
+url: "https://daddesign-projects.github.io"
+
+# Activer la recherche (indispensable pour une doc)
+search_enabled: true
+
+# Options d'en-tête (liens vers votre GitHub)
+aux_links:
+  "Voir le code sur GitHub":
+    - "//github.com/daddesign-projects/OSCAR_Documentation/"
+
+# Pied de page : lien pour éditer la page sur GitHub
+gh_edit_link: true
+gh_edit_link_text: "Éditer cette page sur GitHub"
+gh_edit_repository: "//github.com/daddesign-projects/OSCAR_Documentation/"
+gh_edit_branch: "main"
+
+# Configuration des callouts
+callouts_level: quiet  # ou loud pour plus de contraste
+callouts:
+  note:
+    color: purple
