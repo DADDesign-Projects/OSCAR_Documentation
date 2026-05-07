@@ -14,7 +14,7 @@ This tutorial explains how to clone and set up the repositories required to deve
 > **Note**  
 > Once you are familiar with the OSCAR Workshop environment and the development tools, you can of course organize your workspace and repositories differently.\
 > The method described here is simply a recommended starting point.
-
+{: .text-blue-200 }
 ## Prerequisites
 
 Before starting, make sure the following tools are installed on your computer:
@@ -24,7 +24,7 @@ Before starting, make sure the following tools are installed on your computer:
 * STMicroelectronics STM32CubeIDE
 
 ***
-
+{: .text-blue-200 }
 ## Creating the Workspace Directory
 
 Create a working directory for STM32CubeIDE projects, for example, here: **`OSCAR_Workspace`**
@@ -42,7 +42,7 @@ cd OSCAR_Workspace
 ```
 
 ***
-
+{: .text-blue-200 }
 ## Cloning the OSCAR Effect Development Framework
 
 Clone the repository 'Software_OSCAR_P01A01' containing the OSCAR P01A01 Software effect development framework:
