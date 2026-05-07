@@ -14,6 +14,7 @@ This tutorial explains how to clone and set up the repositories required to deve
 > **Note**  
 > Once you are familiar with the OSCAR Workshop environment and the development tools, you can of course organize your workspace and repositories differently.\
 > The method described here is simply a recommended starting point.
+
 {: .text-blue-200 }
 ## Prerequisites
 
