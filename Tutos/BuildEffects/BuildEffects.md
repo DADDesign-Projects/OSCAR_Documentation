@@ -55,9 +55,13 @@ Compile the other effects in the same way using the following build configuratio
 * `_Reverb4Loader`
 
 >{: .tip }
-> Tip: Build Configurations:\
-> Build configurations starting with **#** (for example #Delay) produce standalone executables that are stored in the flash memory of the STM32H743.\
-> Build configurations ending with **4Loader** (for example Delay4Loader) are used to produce executables that are stored in the QSPI flash memory of the board and can be launched by the bootloader.\
-> The Debug configuration is used to **Debug** the software inside the STM32CubeIDE environment.\
-> 
-> The **Release** configuration produces a standalone executable (similar to # configurations). The compiled effect is determined by the contents of the file: Software_OSCAR_P01A01\DAD_FORGE\Effects\@Config\EffectsConfig.h
+> Tip: Build Configurations:
+>
+> - Build configurations starting with **#xxx** (for example #Delay) produce standalone executables that are stored in the flash memory of the STM32H743.
+>
+> - Build configurations ending with **4Loader** (for example Delay4Loader) are used to produce executables that are stored in the QSPI flash memory of the board and can be launched by the bootloader.
+>
+> - The Debug configuration is used to **Debug** the software inside the STM32CubeIDE environment.
+>
+> - The **Release** configuration produces a standalone executable (similar to # configurations). The compiled effect is determined by the contents of the file: Software_OSCAR_P01A01\DAD_FORGE\Effects\@Config\EffectsConfig.h
+
