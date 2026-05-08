@@ -23,12 +23,14 @@ This tutorial explains how to compile FlasherLoader.
 
 * Git and STM32CUBEIDE installed
 
-* Cloned the [OSCAR\_P01\_FLasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FLasherLoader) repositories and configured the workspace in STM32CubeIDE :
+* Cloned the [OSCAR\_P01\_FLasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FLasherLoader) repositories and configured the workspace in STM32CubeIDE.
 
 *See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)*
 
 ***
-# Compiling the Flasher Loader
+
+{: .text-blue-200 }
+## Compiling the Flasher Loader
 
 We will now compile the Flasher Loader.
 

@@ -33,8 +33,10 @@ This tutorial explains how to program the FlasherLoader or an effect onto the OS
 ## Programming OSCAR
 To program the software into the STM32H743 internal memory, you can use either:
 
+{: .text-blue-300 }
 * An ST-Link programmer,
 * The USB DFU protocol.
+  
 {: .text-blue-300 }
 ### Programming Using DFU Mode (Without ST-LINK)
 
@@ -73,6 +75,6 @@ To program the software into the STM32H743 internal memory, you can use either:
 `......\OSCAR_Workspace\OSCAR_P01_FlasherLoader\Release\OSCAR_P01_FlasherLoader.elf
 `
 - Click `Start Programming`
-  
-
+ \\ 
+\\
 ![](Programmer3.png)
