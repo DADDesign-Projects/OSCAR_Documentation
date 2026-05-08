@@ -6,7 +6,7 @@ nav_order: 3
 ---
 
 {: .text-blue-100 }
-# **How to Compile and Load an Effect**
+# **How to Compile FlasherLoader**
 
 {: .text-blue-300 }
 This tutorial explains how to compile FlasherLoader.

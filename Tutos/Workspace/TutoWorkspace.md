@@ -26,6 +26,7 @@ Before starting, make sure the following tools are installed on your computer:
 
 ***
 
+{: .text-blue-200 }
 ## Creating the Workspace Directory
 
 Create a working directory for STM32CubeIDE projects, for example, here: **`OSCAR_Workspace`**
@@ -44,6 +45,7 @@ cd OSCAR_Workspace
 
 ***
 
+{: .text-blue-200 }
 ## Cloning the OSCAR Effect Development Framework
 
 Clone the repository 'Software_OSCAR_P01A01' containing the OSCAR P01A01 Software effect development framework:
@@ -56,6 +58,7 @@ This repository contains the framework and examples used to develop audio effect
 
 ***
 
+{: .text-blue-200 }
 ## Cloning the OSCAR Flasher Loader
 
 Clone the OSCAR flasher/bootloader project:
@@ -72,6 +75,7 @@ This project contains:
 
 ***
 
+{: .text-blue-200 }
 ## Opening the Workspace in STM32CubeIDE
 
 * Launch STM32CubeIDE.\
@@ -85,6 +89,7 @@ This project contains:
 
 ***
 
+{: .text-blue-200 }
 ## Import Project in STM32CubeIDE Workspace
 
 ### 1. In the **Project Explorer**, click on **Import Projects**.
@@ -114,6 +119,7 @@ This project contains:
 
 ***
 
+{: .text-blue-200 }
 ## ✅ Your Workspace is now configured
 
 You're ready to start working with OSCAR projects.  
