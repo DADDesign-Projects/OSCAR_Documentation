@@ -54,8 +54,7 @@ Compile the other effects in the same way using the following build configuratio
 * `_Modulations4Loader`
 * `_Reverb4Loader`
 
->{: .tip }
-> Tip: Build Configurations:
+> **Tip: Build Configurations:**
 >
 > - Build configurations starting with **#xxx** (for example #Delay) produce standalone executables that are stored in the flash memory of the STM32H743.
 >
