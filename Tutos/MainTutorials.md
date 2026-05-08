@@ -2,10 +2,13 @@
 title: Tutorials
 layout: default
 ---
+
+{: .text-blue-100 }
 # 📘 Tutorials
 
 This section contains tutorials based on the principle of **"how to do a specific task"**.
 
+{: .text-blue-200 }
 ## 🛠️ Required Tools
 
 To follow the examples described in these tutorials, you must first install the following tools on your computer:
