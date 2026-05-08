@@ -6,14 +6,12 @@ nav_order: 4
 ---
 
 {: .text-blue-100 }
-
 # **How to Program OSCAR**
 
 {: .text-blue-300 }
 This tutorial explains how to program the FlasherLoader or an effect onto the OSCAR hardware platform.
 
 {: .text-blue-200 }
-
 ## Prerequisites
 
 **You must also have:**
@@ -22,25 +20,20 @@ This tutorial explains how to program the FlasherLoader or an effect onto the OS
 
 - A working OSCAR pedal (hardware platform) with compatible 12V power supply to download and run the software.
 
-- Compiled the software to be loaded:
+- Compiled the software to be loaded:\
+*See tutorials : [How to Compile Effects](./Workspace/BuildEffects.md), [How to Compile FlasherLoader](./Workspace/BuildFlasher.md)*
     * For effects: compilation option Release, #Delay, #Reverb, or #Modulations.
-    * For the Flashloader: compilation option Release.
-    *See tutorials : [How to Compile Effects](./Workspace/BuildEffects.md), [How to Compile FlasherLoader](./Workspace/BuildFlasher.md)*
-- optional An ST-Link programmer
-To program the software into the STM32H743 internal memory, you can use either:
+    * For the Flashloader: compilation option Release.\
 
-* An ST-Link programmer
-
-* The USB DFU protocol
-
+- Optional An ST-Link programmer
 
 ***
 
 # Programming OSCAR
 To program the software into the STM32H743 internal memory, you can use either:
 
-* An ST-Link programmer
-* The USB DFU protocol
+* An ST-Link programmer,
+* The USB DFU protocol.
 
 ### Programming Using DFU Mode (Without ST-LINK)
 

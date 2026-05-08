@@ -6,20 +6,17 @@ nav_order: 3
 ---
 
 {: .text-blue-100 }
-
 # **How to Compile and Load an Effect**
 
 {: .text-blue-300 }
 This tutorial explains how to compile FlasherLoader.
 
-> {: Tip }
+> {: tip }
 > About FlasherLoader\
-> The flasher utility used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR P01 board
->
-> The bootloader used by the pedal to launch the selected executable from the external QSPI flash memory at power-up
+>- The flasher utility used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR P01 board
+>-  The bootloader used by the pedal to launch the selected executable from the external QSPI flash memory at power-up
 
 {: .text-blue-200 }
-
 ## Prerequisites
 
 **You must also have:**
@@ -34,13 +31,11 @@ This tutorial explains how to compile FlasherLoader.
 > See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)
 
 ***
-
 # Compiling the Flasher Loader
 
 We will now compile the Flasher Loader.
 
 * Select the `OSCAR_P01_FlasherLoader` project.
-
 * Build the `Release` configuration.
 
 ![](Workspace2.png)
