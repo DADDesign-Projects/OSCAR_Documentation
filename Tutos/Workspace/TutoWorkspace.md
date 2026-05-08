@@ -69,7 +69,7 @@ git clone --recurse-submodules https://github.com/DADDesign-Projects/OSCAR_P01_F
 
 This project contains:
 
-* The flasher utility used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR P01 board
+* The flasher utility, used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR P01 board
 
 * The bootloader used by the pedal to launch the selected executable from the external QSPI flash memory at power-up
 
