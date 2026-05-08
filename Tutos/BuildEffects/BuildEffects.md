@@ -18,13 +18,10 @@ This tutorial explains how to compile effects for load it onto the OSCAR hardwar
 
 * Git and STM32CUBEIDE installed
 
-* Cloned the following repositories and configured the workspace in STM32CubeIDE :
-
-  * [Software\_OSCAR\_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01)
+* Cloned  [Software\_OSCAR\_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01) repositories and configured the workspace in STM32CubeIDE :
 
 
-> {: .note }
-> See: [How to Create Your Workspace](./Workspace/TutoWorkspace.md)
+*See: [How to Create Your Workspace](./Workspace/TutoWorkspace.md)*
 
 ***
 # Compiling Effects
@@ -57,7 +54,8 @@ Compile the other effects in the same way using the following build configuratio
 
 >{: .tip }
 >Tip: Build Configurations:
->- Build configurations starting with # (for example #Delay) produce standalone executables that are stored in the flash memory of the STM32H743.
->- Build configurations ending with 4Loader (for example Delay4Loader) are used to produce executables that are stored in the QSPI flash memory of the board and can be launched by the bootloader.
->- The Debug configuration is used to debug the software inside the STM32CubeIDE environment.
->- The Release configuration produces a standalone executable (similar to # configurations). The compiled effect is determined by the contents of the file: Software_OSCAR_P01A01\DAD_FORGE\Effects\@Config\EffectsConfig.h
+>
+> - Build configurations starting with # (for example #Delay) produce standalone executables that are stored in the flash memory of the STM32H743.
+>Build configurations ending with 4Loader (for example Delay4Loader) are used to produce executables that are stored in the QSPI flash memory of the board and can be launched by the bootloader.
+>The Debug configuration is used to debug the software inside the STM32CubeIDE environment.
+>The Release configuration produces a standalone executable (similar to # configurations). The compiled effect is determined by the contents of the file: Software_OSCAR_P01A01\DAD_FORGE\Effects\@Config\EffectsConfig.h
