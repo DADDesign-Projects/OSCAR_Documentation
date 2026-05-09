@@ -5,46 +5,41 @@ layout: default
 nav_order: 3
 ---
 
-{: .text-blue-100 }
-# **How to Compile FlasherLoader**
+# How to Compile FlasherLoader
 
 {: .text-blue-300 }
-This tutorial explains how to compile FlasherLoader.
+This tutorial explains how to compile the FlasherLoader utility.
 
 > {: tip }
-> About FlasherLoader\
-> - The flasher utility used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR P01 board
-> - The bootloader used by the pedal to launch the selected executable from the external QSPI flash memory at power-up
+> **About FlasherLoader**
+> The FlasherLoader serves two primary functions on the OSCAR P01 board:
+> *   It is a flasher utility used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory.
+> *   It acts as the bootloader, which allows the pedal to launch selected executables from the external QSPI flash memory upon power-up.
 
-{: .text-blue-200 }
 ## Prerequisites
 
-**You must also have:**
+**You must have the following installed and configured:**
 
-* Git and STM32CubeIDE installed
-
-* The [OSCAR_P01_FlasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FlasherLoader) repository cloned and the workspace configured in STM32CubeIDE
+*   Git and STM32CubeIDE.
+*   The [OSCAR_P01_FlasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FlasherLoader) repository cloned, with the workspace properly configured in STM32CubeIDE.
 
 *See: [Workspace Tutorial](./Workspace/TutoWorkspace.md)*
 
 ***
 
-{: .text-blue-200 }
 ## Compiling FlasherLoader
 
-We will now compile FlasherLoader.
+Follow these steps to compile FlasherLoader:
 
-* Select the `OSCAR_P01_FlasherLoader` project.
-
-* Build the `Release` configuration.
+1.  Select the `OSCAR_P01_FlasherLoader` project within STM32CubeIDE.
+2.  Build the project using the **`Release`** configuration.
 
 ![](Workspace2.png)
 
-*FlasherLoader will now be compiled.*
+The compilation process will now begin.
 
-* If everything completed successfully, a `Release` directory should appear inside your project.
-
-* It contains the generated executable file `OSCAR_P01_FlasherLoader.elf`
+*   If the compilation completes successfully, a directory named `Release` should appear inside your project structure.
+*   This directory contains the generated executable file: `OSCAR_P01_FlasherLoader.elf`.
 
 ***
 

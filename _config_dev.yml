@@ -4,8 +4,8 @@ remote_theme: just-the-docs/just-the-docs
 # Configuration générale de votre site
 title: "OSCAR Documentation"
 description: "Documentation du projet OSCAR"
-baseurl: "/OSCAR_Documentation"
-url: "https://daddesign-projects.github.io"
+baseurl: ""
+url: "http://localhost:4000"
 
 # Activer la recherche (indispensable pour une doc)
 search_enabled: true
@@ -22,7 +22,7 @@ gh_edit_repository: "//github.com/daddesign-projects/OSCAR_Documentation/"
 gh_edit_branch: "main"
 
 # Configuration des callouts
-callouts_level: loud #quiet  # ou loud pour plus de contraste
+callouts_level: quiet  # ou loud pour plus de contraste
 callouts:
   note:
     color: purple
@@ -32,3 +32,9 @@ callouts:
     color: green
   highlight:
     color: yellow
+
+plugins:
+  - jekyll-remote-theme
+
+extra_css:
+  - assets/css/custom.css

@@ -5,8 +5,7 @@ layout: default
 nav_order: 2
 ---
 
-{: .text-blue-100 }
-# **How to Compile Effects**
+# How to Compile Effects
 
 {: .text-blue-300 }
 This tutorial explains how to compile effects and load them onto the OSCAR hardware platform.
@@ -14,53 +13,43 @@ This tutorial explains how to compile effects and load them onto the OSCAR hardw
 {: .text-blue-200 }
 ## Prerequisites
 
-**You must also have:**
+**You must have the following installed and configured:**
 
-* Git and STM32CubeIDE installed
-
-* The [Software_OSCAR_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01) repository cloned and the workspace configured in STM32CubeIDE
+*   Git and STM32CubeIDE.
+*   The [Software_OSCAR_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01) repository cloned, with the workspace properly configured in STM32CubeIDE.
 
 *See: [How to Create Your Workspace](./Workspace/TutoWorkspace.md)*
 
 ***
 
-{: .text-blue-200 }
 ## Compiling Effects
 
-* Open STM32CubeIDE and select the `OSCAR_Workspace` workspace.
-
-We will now compile the Delay effect in a version compatible with the Loader.
-
-* Select the `Software_OSCAR_P01_A01` project.
-
-* In the toolbar, click the small downward arrow located to the right of the hammer icon.\
-  -> The list of build configurations will open.
-
-* Click on `_Delay4Loader` in the list.
+1.  Open STM32CubeIDE and select the `OSCAR_Workspace`.
+2.  We will now compile the Delay effect using a configuration compatible with the Loader.
+3.  Select the `Software_OSCAR_P01_A01` project.
+4.  In the toolbar, click the small downward arrow located next to the hammer icon (Build/Configure). This will open the list of build configurations.
+5.  Click on `_Delay4Loader` in the list.
 
 ![](Workspace1.png)
 
-*The Delay effect will now be compiled.*
+The Delay effect is now compiling.
 
-- If everything completed successfully, a `_Delay4Loader` directory should appear inside your project.\
-- It contains the generated executable file `Delay.elf`
+*   If the compilation completes successfully, a directory named `_Delay4Loader` should appear inside your project structure.
+*   This directory contains the generated executable file: `Delay.elf`.
 
 ---
 
 ![](Workspace2.png)
 
-Compile the other effects in the same way using the following build configurations:
+You can compile the other effects in the same manner using these build configurations:
 
-* `_Modulations4Loader`
-* `_Reverb4Loader`
+*   `_Modulations4Loader`
+*   `_Reverb4Loader`
 
-> **Tip: Build Configurations**
+{: .tip}
+> **Tip: Understanding Build Configurations**
 >
-> - Build configurations starting with **#xxx** (for example `#Delay`) produce standalone executables that are stored in the internal flash memory of the STM32H743.
->
-> - Build configurations ending with **4Loader** (for example `Delay4Loader`) are used to produce executables stored in the board's QSPI flash memory and launched by the bootloader.
->
-> - The **Debug** configuration is used to debug the software inside the STM32CubeIDE environment.
->
-> - The **Release** configuration produces a standalone executable (similar to the `#xxx` configurations). The compiled effect is determined by the contents of the following file:  
-> `Software_OSCAR_P01A01/DAD_FORGE/Effects/@Config/EffectsConfig.h`
+> * Use configurations starting with **#xxx** (e.g., `#Delay`) to generate standalone executables that are stored in the internal flash memory of the STM32H743.
+> * Configurations ending with **4Loader** (e.g., `Delay4Loader`) produce executables designed for storage in the board's QSPI flash memory, which are then launched by the bootloader.
+> * The **Debug** configuration is used to debug the software directly within the STM32CubeIDE environment.
+> * The **Release** configuration produces a standalone executable (similar to the `#xxx` configurations). The final compiled effect version is determined by the contents of this file: `Software_OSCAR_P01A01/DAD_FORGE/Effects/@Config/EffectsConfig.h`.
