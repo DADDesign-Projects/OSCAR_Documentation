@@ -10,7 +10,6 @@ nav_order: 2
 {: .text-blue-300 }
 This tutorial explains how to compile effects and load them onto the OSCAR hardware platform.
 
-{: .text-blue-200 }
 ## Prerequisites
 
 **You must have the following installed and configured:**
