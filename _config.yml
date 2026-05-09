@@ -32,3 +32,9 @@ callouts:
     color: green
   highlight:
     color: yellow
+
+plugins:
+  - jekyll-remote-theme
+
+extra_css:
+  - assets/css/custom.css
