@@ -1,6 +1,6 @@
 ---
 title: How to Create Your Workspace
-parent: Tutorials
+parent: To Begin
 layout: default
 nav_order: 1
 ---

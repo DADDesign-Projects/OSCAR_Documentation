@@ -1,6 +1,6 @@
 ---
 title: How to Compile FlasherLoader
-parent: Tutorials
+parent: To Begin
 layout: default
 nav_order: 3
 ---

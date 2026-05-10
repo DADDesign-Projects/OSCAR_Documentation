@@ -1,0 +1,92 @@
+---
+title: How to Compile Effects
+parent: To Begin
+layout: default
+nav_order: 5
+---
+
+# comment utiliser le FlasherLoader
+
+{: .text-blue-300 }
+Ce tutorial explique la raison d'être et la mise en oeuvre de l'utilitaire FlaserLoader.
+
+# Raison d'être
+Les programmes executable de l'ecosystème OSCAR utilisent des fichiers ressources(fonts, images, sample, ...) sans ces ressource ils ne fonctionne pas,  Il est donc necessaire avant toute excecution code, de charger ces fichier ressources en memoire flash QSPI (memoire de forte quapacité externe au Microcontroleur).
+
+## Le FlashLoader
+Le flasherLoader à deux fonctions :
+* Flasher -> en collaboration avec le Flasher server le flasherLoader receptionne à partir de la prise usb, des fichiers et les memorises dans dans la memoire Flash QSPi de la plateforme OSCAR.  
+* Charger -> A la mise sous tension de la platforme OSCAR le flasherLoader charge en memoire vive le code exécutable contenu dans un fichier ELF puis lance son l'execution. 
+
+## Le Flasher Server 
+OSCAR_Flasher_Server est un logiciel utilitaire qui s'execute sur votre ordinateur. Il permet de transmettre un ensemble de fichiers à travers un port com. ces fichier sont transmis à travers la liason usb relée à OSCAR.
+OSCAR_Flasher_Server transforme certains type de fichier pour qu'ils soit utilisable plus simplement par le logiciel des effets.
+
+pour les Image Files
+    Supported formats: JPG, PNG, GIF, etc.
+    Automatically converted to RAW format
+    Directly compatible with the DAD_FORGE/STM_GFX graphics library
+
+pour ELF Effect Files (executables)
+    ELF executables are:
+        Parsed 
+        Processed and formatted pour qui soit utilisable simplement par the OSCAR loader:
+
+Other Files
+    Transferred as-is without modification
+
+> **Note:**  
+> The flasher client currently only works on Windows.  
+> Collaboration is welcome to help port the `FlasherServer` utility to Linux or macOS.  
+> Alternatively, a Python port could also be a good solution.
+>
+
+## Prerequisites
+You must have the following:
+    A working OSCAR pedal (hardware platform) with a compatible 12V power supply, required for downloading and running the software.
+    FlasherLoader: chargé dans la memoire flash du microcontroleur de la pedale OSCAR. See tutorials:  How to Compile FlasherLoader et How to Program OSCAR.
+
+## Mise en oeuvre
+sur votre ordianteur Lancer l'excutable "......\OSCAR_Workspace\OSCAR_P01_FLasherLoader\@FlasherServer\OSCAR_Flasher_Server.exe"
+Racorder la pedale OSCAR à votre ordinateur avec un cable USB
+Mettre la pedale sous tension en maintenant le footswitch 1 enfoncé (desactive le bootloder).
+Oscar affiche l'interfce suivante :
+
+en haut la partie falsher qui visualise l'etat de du telechargement.
+en bas la partie loader qui visualise:
+* les fichiers executables present dans la memoire flashe et 
+* le fichier executable choisi pour lancer lors de la mise sous tension  
+
+dans OSCAR_Flasher_Server clique sur refresh -> un nouveau port com apparait.
+Sectionner le nouveau le port com -> la fenetre d'info doit afficher OK : OSCAR is detected on COMxx
+Nous allons configurer la liste des fichiers à charger. Les programmes executable de l'ecosystème OSCAR on besoin au minima pour fonctionner de tous les fichiers present dans "....\OSCAR_Workspace\Software_OSCAR_P01A01\Ressources" nous alons donc les ajouter à la liste de fichier à flasher :
+cliquer sur Add File aller dans le repertoire \OSCAR_Workspace\Software_OSCAR_P01A01\Ressources\bin selectionner tous les fichier pzresent dans ce repertoire cliquer sur ouvrir.
+les fichier apparaissent dans la liste des fichiers.
+cliquer sur Add file aller dans le repertoire \OSCAR_Workspace\Software_OSCAR_P01A01\Ressources\Images selectionner tous les fichier pzresent dans ce repertoire cliquer sur ouvrir.
+les fichier apparaissent dans la liste des fichiers.
+Nous allons maintenant charger les fichier executables des different effet:
+au prealables des effets doivent être compilés avec les configurations `_Delay4Loader`, `_Reverb4Loader`, or `_Modulations4Loader`.voir How to Compile Effects
+cliquer sur Add File et selctionner le fichier "D:\Dev\OSCAR_Workspace\Software_OSCAR_P01A01\_Delay4Loader\Delay4L.elf"
+cliquer sur Add File et selctionner le fichier "D:\Dev\OSCAR_Workspace\Software_OSCAR_P01A01\_Reverb4Loader\Reverb4L.elf"
+cliquer sur Add File et selctionner le fichier "D:\Dev\OSCAR_Workspace\Software_OSCAR_P01A01\_Modulations4Loader\Modulations4L.elf"
+
+nous pouvons maintenant lancer le transfert ver sla pedale en cliquant sur flash.
+sur la pedale OSCAR :
+dans un premier temps Tous les fichiers présent dans la memoire flash QSPI sont effacés
+le telechargement et l'enregistrement des fichers s'execute en synchhronime ave de server 
+La tailles des de ma memoire flashe et de la memoire restante sont visualisée en temps reel sur la pedale.
+lorsque tous les fichiers sont chargé le flasher verifie le bon enregistrement des données et affiche Flash OK.
+
+Note. Il est possible de concatener la liste des fichiers dans un seul fichier ofsf en cliquant sur  Save Files.
+Plus tard vous pourer utiliser ce fichier en l'ajoutant simlement dans la liste des fichier et ainsi limiter le smanipulation et evité les erreurs. cela permet aussi d'optenir dans un seul fichier toute un configuration autonome et cohérente. pour archivage ou livraison.
+
+Nous pouvons configurer le fichier executable à lancer :
+Sur la pedale tourner l'encodeur M  pour faire defiler les fichiers executables presents dans la memoire flash QSPI. 
+clique sur l'encoder Pour selectionner le fichier visualisé comme fichier à lancer lors de la mise sous tension.
+
+Couper et remetre l'alimentation de la pedale (vous pouvez aussi appuyer sur le bouton reset) et vous devrier voir ce lancer l'effet choisi.
+Si vous voulez modifier le logiciel à lancer ou telecharger de nouveau fichier vous devez lors de la mise sous tension maintenir le footswitch 1 appuyé le lancement de l'executable est abbondonné et l'interface du FlashLoader s'affiche.
+
+Bravo vous venez programmer votre pédale OSCAR avec ses effets. Il ne vous reste plus qu'a allez jouer de la musique :) 
+Naturellement vous voudrez sans doute modifier les effets existant ou mieux en creer de nouveau. 
+l'ecosysteme OSCAR et sa biblihothèque DAD_FORGE on ete créé pour vous simplifier la tache en prenant en charge toutes le contigences du materiel t en apportants des helpers GTX, GUI, DSP, ... facilitant le developpement et vous permettant de vous concentrer sur l'essentiel : concevoir et créer les effets numériques dont vous avez toujours rêvé.  

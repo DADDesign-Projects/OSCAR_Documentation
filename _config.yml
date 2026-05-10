@@ -3,7 +3,7 @@ remote_theme: just-the-docs/just-the-docs
 
 # Configuration générale de votre site
 title: "OSCAR Documentation"
-description: "Documentation du projet OSCAR"
+description: "OSCAR Project Documentation"
 baseurl: "/OSCAR_Documentation"
 url: "https://daddesign-projects.github.io"
 
@@ -12,12 +12,12 @@ search_enabled: true
 
 # Options d'en-tête (liens vers votre GitHub)
 aux_links:
-  "Voir le code sur GitHub":
+  "See the code on GitHub":
     - "//github.com/daddesign-projects/OSCAR_Documentation/"
 
 # Pied de page : lien pour éditer la page sur GitHub
 gh_edit_link: true
-gh_edit_link_text: "Éditer cette page sur GitHub"
+gh_edit_link_text: "Edit this page on GitHub"
 gh_edit_repository: "//github.com/daddesign-projects/OSCAR_Documentation/"
 gh_edit_branch: "main"
 

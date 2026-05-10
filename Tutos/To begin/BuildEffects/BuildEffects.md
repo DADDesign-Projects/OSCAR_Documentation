@@ -1,6 +1,6 @@
 ---
 title: How to Compile Effects
-parent: Tutorials
+parent: To Begin
 layout: default
 nav_order: 2
 ---

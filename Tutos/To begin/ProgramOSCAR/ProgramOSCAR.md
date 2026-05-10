@@ -1,6 +1,6 @@
 ---
 title: How to Program OSCAR
-parent: Tutorials
+parent: To Begin
 layout: default
 nav_order: 4
 ---
@@ -17,9 +17,7 @@ This tutorial explains how to program the FlasherLoader or an audio effect onto 
 *   STM32CubeProgrammer installed.
 *   A working OSCAR pedal (hardware platform) with a compatible 12V power supply, required for downloading and running the software.
 *   The software to be loaded already compiled:
-    *   See tutorials: [How to Compile Effects](./Workspace/BuildEffects.md) and [How to Compile FlasherLoader](./Workspace/BuildFlasher.md).
-    *   For effects: Use build configurations `Release`, `#Delay`, `#Reverb`, or `#Modulations`.
-    *   For FlasherLoader: Use the `Release` build configuration.
+    See tutorials: [How to Compile Effects](./Workspace/BuildEffects.md) and [How to Compile FlasherLoader](./Workspace/BuildFlasher.md).
 *   Optionally, an ST-Link programmer.
 
 ***
