@@ -8,12 +8,11 @@ nav_order: 5
 # How to Use FlasherLoader
 
 {: .text-blue-300 }
-This tutorial explains the purpose of the `FlasherLoader` utility and how to use it with the OSCAR ecosystem.
+This tutorial explains the purpose of the `FlasherLoader` utility and how to use it within the OSCAR ecosystem.
 
 ## Why FlasherLoader Exists
 
-OSCAR executable programs use resource files such as fonts, images, samples, and other assets.  
-Without these resources, the effects cannot operate correctly.
+OSCAR executable programs require resource files such as fonts, images, samples, and other assets. Without these resources, the effects cannot operate correctly.
 
 Before running any effect, all required resources must therefore be loaded into the external QSPI flash memory of the OSCAR platform.
 
@@ -24,7 +23,7 @@ Before running any effect, all required resources must therefore be loaded into 
 `FlasherLoader` has two main functions:
 
 * **Flasher**  
-  In collaboration with `OSCAR_Flasher_Server`, the FlasherLoader receives files through the USB connection and stores them into the OSCAR platform QSPI flash memory.
+  In collaboration with `OSCAR_Flasher_Server`, the FlasherLoader receives files through the USB connection and stores them into the OSCAR platform's QSPI flash memory.
 
 * **Loader**  
   When the OSCAR platform powers on, the FlasherLoader loads an executable ELF file into RAM and starts its execution.
@@ -33,43 +32,34 @@ Before running any effect, all required resources must therefore be loaded into 
 
 ## The Flasher Server
 
-`OSCAR_Flasher_Server` is a utility program that runs on your computer.
-
-It allows you to transfer files through a COM port over the USB connection linked to the OSCAR pedal.
+`OSCAR_Flasher_Server` is a utility program that runs on your computer. It allows you to transfer files through a COM port over the USB connection linked to the OSCAR pedal.
 
 ![](FlasherUI.png)
 
 {: .warning}
 > **Note:**  
-> The Flasher Server currently only works on Windows.  
-> Contributions are welcome to help port the utility to Linux or macOS.  
-> A Python implementation could also be a good alternative.
+> The Flasher Server currently only works on Windows. Contributions are welcome to help port the utility to Linux or macOS. A Python implementation could also be a good alternative.
 
 ---
 
-## Preparation of files by the server processor
+## Preparation of Files by the Server Processor
 
-The Flasher Server preprocesses some file types to simplify their use inside OSCAR effects:**
+The Flasher Server preprocesses some file types to simplify their use inside OSCAR effects:
 
 **Image Files**
-Supported formats:
+Supported formats include:
 
 * JPG
 * PNG
 * GIF
 * and more...
 
-Image files are automatically converted to RAW format and become directly compatible with the `DAD_FORGE / STM_GFX` graphics library.
+Image files are automatically converted to RAW format, making them directly compatible with the `DAD_FORGE / STM_GFX` graphics library.
 
 **ELF Effect Files (Executables)**
-ELF executables are:
-
-* Parsed
-* Processed
-* Reformatted for easy use by the OSCAR Loader
+ELF executables undergo processing: they are parsed, processed, and reformatted for easy use by the OSCAR Loader.
 
 **Other Files**
-
 All other file types are transferred without modification.
 
 
@@ -85,8 +75,8 @@ You must have:
 
 See tutorials:
 
-* `How to Compile FlasherLoader`
-* `How to Program OSCAR`
+* [How to Compile FlasherLoader](../BuildFlasher/BuildFlasher.html)
+* [How to Program OSCAR](../ProgramOSCAR/ProgramOSCAR.html)
 
 ---
 
@@ -100,11 +90,7 @@ On your computer, launch:
 ...\OSCAR_Workspace\OSCAR_P01_FlasherLoader\@FlasherServer\OSCAR_Flasher_Server.exe
 ```
 
-Connect the OSCAR pedal to your computer using a USB cable.
-
-Power on the pedal while holding **Footswitch 1** pressed.
-
-This disables automatic booting and displays the FlasherLoader interface.
+Connect the OSCAR pedal to your computer using a USB cable. Power on the pedal while holding **Footswitch 1** pressed. This disables automatic booting and displays the FlasherLoader interface.
 
 ---
 
@@ -161,7 +147,7 @@ OSCAR effects require at minimum all resource files located in:
 3. Select all files
 4. Click **Open**
 
-The files appear in the flashing list.
+The files will appear in the flashing list.
 
 ### Add Image Resources
 
@@ -175,7 +161,7 @@ The files appear in the flashing list.
 3. Select all files
 4. Click **Open**
 
-The files appear in the flashing list.
+The files will appear in the flashing list.
 
 ---
 
@@ -187,7 +173,7 @@ Before continuing, the effects must be compiled using the following build config
 * `_Reverb4Loader`
 * `_Modulations4Loader`
 
-See tutorial: [How to Compile Effects](./How to Compile Effects/How to Compile Effects.md)
+See tutorial: [How to Compile Effects](../BuildEffects/BuildEffects.html)
 
 Add the executable files:
 
@@ -235,9 +221,7 @@ Flash OK
 
 ## OFSF Files
 
-You can save an entire file list into a single `.ofsf` file by clicking **Save Files**.
-
-Later, you can simply add this OFSF file to the flashing list instead of manually selecting all files again.
+You can save an entire file list into a single `.ofsf` file by clicking **Save Files**. Later, you can simply add this OFSF file to the flashing list instead of manually selecting all files again.
 
 Advantages:
 
@@ -259,22 +243,18 @@ On the OSCAR pedal:
 
 ## Launching an Effect
 
-Power cycle the pedal or press the **RESET** button.
-
-The selected effect should start automatically.
+Power cycle the pedal or press the **RESET** button. The selected effect should start automatically.
 
 ---
 
 ## Returning to FlasherLoader Mode
 
-If you want to:
+If you wish to:
 
 * Change the executable to launch
 * Transfer new files
 
-You must hold **Footswitch 1** during power-up.
-
-The executable launch is cancelled and the FlasherLoader interface appears again.
+You must hold **Footswitch 1** during power-up. The executable launch is cancelled, and the FlasherLoader interface appears again.
 
 ---
 

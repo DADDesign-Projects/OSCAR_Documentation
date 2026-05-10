@@ -17,7 +17,7 @@ This tutorial explains how to program the FlasherLoader or an audio effect onto 
 *   STM32CubeProgrammer installed.
 *   A working OSCAR pedal (hardware platform) with a compatible 12V power supply, required for downloading and running the software.
 *   The software to be loaded already compiled:
-    See tutorials: [How to Compile Effects](./Workspace/BuildEffects.md) and [How to Compile FlasherLoader](./Workspace/BuildFlasher.md).
+    See tutorials: [How to Compile Effects](../BuildEffects/BuildEffects.html) and [How to Compile FlasherLoader](../BuildFlasher/BuildFlasher.html).
 *   Optionally, an ST-Link programmer.
 
 ***

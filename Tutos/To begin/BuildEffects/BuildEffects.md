@@ -17,7 +17,7 @@ This tutorial explains how to compile effects and load them onto the OSCAR hardw
 *   Git and STM32CubeIDE.
 *   The [Software_OSCAR_P01A01](https://github.com/DADDesign-Projects/Software_OSCAR_P01A01) repository cloned, with the workspace properly configured in STM32CubeIDE.
 
-*See: [How to Create Your Workspace](./Workspace/TutoWorkspace.md)*
+*See: [How to Create Your Workspace](../Workspace/TutoWorkspace.html)*
 
 ***
 
