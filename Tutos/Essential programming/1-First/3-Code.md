@@ -50,7 +50,7 @@ void cMyFirstEffect::onInitialize()
                               nullptr);               // Parameter View 3
 
     // Add the panel to the effect's menu
-    m_Menu.addMenuItem(&m_ParameterDemoPanel, "First");
+    m_Menu.addMenuItem(&m_ParameterFirstPanel, "First");
 }
 
 // -----------------------------------------------------------------------------

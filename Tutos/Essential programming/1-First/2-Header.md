@@ -15,7 +15,7 @@ Open `Software_OSCAR_P01A01/DAD_FORGE/Effects/MyFirstEffect/Inc/cMyFirstEffect.h
 #pragma once
 #include "cEffectBase.h"
 
-class cMyFirstEffect : public cEffectBase {
+class cMyFirstEffect : public DadEffect::cEffectBase {
 public:
     // -------------------------------------------------------------------------
     // Constructor - performs no initialization by itself

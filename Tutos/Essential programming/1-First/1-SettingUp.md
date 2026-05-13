@@ -58,6 +58,23 @@ This tells FORGE to compile our effect.
 #endif
 ```
 
+In the 'EFFECT CONFIGURATION CHECK' section, append ` && !defined(MY_FIRST_EFFECT)` to the condition of the second if statement.
+
+```cpp
+// ====================== EFFECT CONFIGURATION CHECK ======================
+// Ensures exactly one effect is selected during compilation.
+//
+
+#if defined(DELAY_EFFECT) + defined(MODULATIONS_EFFECT) + defined(REVERB_EFFECT) + defined(TEMPLATE_EFFECT) + defined(TEMPLATE_MULTI_MODE_EFFECT)> 1
+#error "ERROR: Multiple effects are defined at the same time! Only one effect must be active."
+#endif
+
+#if !defined(DELAY_EFFECT) && !defined(MODULATIONS_EFFECT) && !defined(REVERB_EFFECT) && !defined(TEMPLATE_EFFECT) && !defined(TEMPLATE_MULTI_MODE_EFFECT) && !defined(MY_FIRST_EFFECT)
+#error "ERROR: No effect is defined! Please define exactly one of: DELAY_EFFECT, MODULATIONS_EFFECT or REVERB_EFFECT."
+#endif
+```
+
+
 At the end of the file, add the following code to provide FORGE with the information required to run the effect:
 
 ```cpp
