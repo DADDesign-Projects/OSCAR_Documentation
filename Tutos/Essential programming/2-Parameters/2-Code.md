@@ -48,7 +48,7 @@ public:
     // -------------------------------------------------------------------------
     // Pan callback
     // -------------------------------------------------------------------------
-    void static onPanChange(DadDSP::cParameter* pBalanceParameter, uint32_t Data);
+    void static onPanChange(DadDSP::cParameter* pPanParameter, uint32_t Data);
 
     // -------------------------------------------------------------------------
     // Compute left/right channel gains using a logarithmic (power) curve
@@ -63,27 +63,27 @@ protected:
     // -------------------------------------------------------------------------
     // Parameter declarations
     // -------------------------------------------------------------------------
-    DadGUI::cUIParameter                m_ParameterGain;           // Gain control parameter
-    DadGUI::cUIParameter                m_ParameterPan;            // Stereo Panning parameter
-    DadGUI::cUIParameter                m_ParameterStereoMode;     // Stereo mode parameter
+    DadGUI::cUIParameter                m_ParameterGain;        // Gain control parameter
+    DadGUI::cUIParameter                m_ParameterPan;         // Stereo Panning parameter
+    DadGUI::cUIParameter                m_ParameterStereoMode;  // Stereo mode parameter
 
     // -------------------------------------------------------------------------
     // Parameter view declarations
     // -------------------------------------------------------------------------
-    DadGUI::cParameterNumNormalView     m_ParameterGainView;        // GUI view for the gain parameter
-    DadGUI::cParameterNumLeftRightView  m_ParameterPanView;         // GUI view for Panning parameter
-    DadGUI::cParameterDiscretView       m_ParameterStereoModeView;  // GUI view for stereo mode parameter
+    DadGUI::cParameterNumNormalView     m_ParameterGainView;    	// GUI view for the gain parameter
+    DadGUI::cParameterNumLeftRightView  m_ParameterPanView;  		// GUI view for Panning parameter
+    DadGUI::cParameterDiscretView       m_ParameterStereoModeView;	// GUI view for stereo mode parameter
 
     // -------------------------------------------------------------------------
     // Panel declarations
     // -------------------------------------------------------------------------
-    DadGUI::cPanelOfParameterView       m_ParameterFirstPanel;   // Demo panel containing parameter views
-
+    DadGUI::cPanelOfParameterView       m_ParameterFirstPanel;        // Demo panel containing 
+    
     // -------------------------------------------------------------------------
     // Variables
     // -------------------------------------------------------------------------
-    float   m_RightGain;            // Right gain calculated
-    float   m_LeftGain;             // Left gain calculated
+    float   m_RightGain;  // Right gain calculated
+    float   m_LeftGain;   // Left gain calculated
 };
 
 ```
@@ -106,72 +106,72 @@ constexpr uint32_t MY_FIRST_EFFECT_ID = BUILD_ID('M', 'F', 'E', '1');
 void cMyFirstEffect::onInitialize()
 {
     // Initialize the Gain parameter
-    m_ParameterGain.Init(MY_FIRST_EFFECT_ID,   // Serialize ID
-                         50.0f,                // Default value
-                         0.0f,                 // Minimum value
-                         100.0f,               // Maximum value
-                         5.0f,                 // Fast increment
-                         1.0f,                 // Slow increment
-                         onGainChange,         // Callback function
-                         (uint32_t)this,       // Callback user data
-                         0.5f,                 // Transition time (seconds)
-                         20);                  // MIDI CC number
+    m_ParameterGain.Init(MY_FIRST_EFFECT_ID,// Serialize ID
+                         50.0f,             // Default value
+                         0.0f,              // Minimum value
+                         100.0f,            // Maximum value
+                         5.0f,              // Fast increment
+                         1.0f,              // Slow increment
+                         onGainChange,      // Callback function
+                         (uint32_t)this,    // Callback user data
+                         1.0f,              // Transition time (seconds)
+                         20);               // MIDI CC number
 
     // Initialize the Gain parameter
-    m_ParameterPan.Init(MY_FIRST_EFFECT_ID,// Serialize ID
-                         0.0f,                 // Default value
-                         -100.0f,              // Minimum value
-                         100.0f,               // Maximum value
-                         5.0f,                 // Fast increment
-                         1.0f,                 // Slow increment
-                         onPanChange,      // Callback function
-						 (uint32_t)this,       // Callback user data
-                         0.5f,                 // Transition time (seconds)
-                         21);                  // MIDI CC number
+    m_ParameterPan.Init(MY_FIRST_EFFECT_ID, // Serialize ID
+                         0.0f,              // Default value
+                         -100.0f,           // Minimum value
+                         100.0f,            // Maximum value
+                         5.0f,              // Fast increment
+                         1.0f,              // Slow increment
+                         onPanChange,       // Callback function
+                         (uint32_t)this,    // Callback user data
+                         1.0f,              // Transition time (seconds)
+                         21);               // MIDI CC number
 
     // Initialize the Gain parameter
-    m_ParameterStereoMode.Init(MY_FIRST_EFFECT_ID,   // Serialize ID
-                         0.0f,                 // Default value
-                         0.0f,                 // Minimum value
-                         0.0f,                 // Maximum value
-                         1.0f,                 // Fast increment
-                         1.0f,                 // Slow increment
-                         nullptr,              // Callback function
-                         0,                    // Callback user data
-                         0.0f,                 // Transition time (seconds)
-                         22);                  // MIDI CC number
+    m_ParameterStereoMode.Init(MY_FIRST_EFFECT_ID,// Serialize ID
+                         0.0f,              // Default value
+                         0.0f,              // Minimum value
+                         0.0f,              // Maximum value
+                         1.0f,              // Fast increment
+                         1.0f,              // Slow increment
+                         nullptr,           // Callback function
+                         0,                 // Callback user data
+                         0.0f,              // Transition time (seconds)
+                         22);               // MIDI CC number
 
     // Initialize the GUI view for the parameter
-    m_ParameterGainView.Init(&m_ParameterGain,             // Linked parameter
-                             "Gain",                       // Short name
-                             "Gain",                       // Long name
-                             "%",                          // Unit (short)
-                             "percent");                   // Unit (long)
+    m_ParameterGainView.Init(&m_ParameterGain,// Linked parameter
+                             "Gain",        // Short name
+                             "Gain",        // Long name
+                             "%",           // Unit (short)
+                             "percent");    // Unit (long)
 
     // Initialize the GUI view for the parameter
-    m_ParameterPanView.Init(&m_ParameterPan,           // Linked parameter
-                             "Bal.",                       // Short name
-                             "Balance",                    // Long name
-                             "%",                          // Unit (short)
-                             "percent");                   // Unit (long)
+    m_ParameterPanView.Init(&m_ParameterPan,// Linked parameter
+                             "Pan",         // Short name
+                             "Pan control", // Long name
+                             "%",           // Unit (short)
+                             "percent");    // Unit (long)
 
     // Initialize the GUI view for the parameter
     m_ParameterStereoModeView.Init(&m_ParameterStereoMode, // Linked parameter
-                             "Mode",                       // Short name
-                             "Stereo Mode");               // Long name
+                             "Mode",        // Short name
+                             "Stereo Mode");// Long name
 
     m_ParameterStereoModeView.AddDiscreteValue(
-                                            "Stereo",      // ShortDiscretValue
-                                            "Stereo");     // LongDiscretValue
+                            "Stereo",       // ShortDiscretValue
+                            "Stereo");      // LongDiscretValue
 
     m_ParameterStereoModeView.AddDiscreteValue(
-                                            "Mono",         // ShortDiscretValue
-                                            "Mono");        // LongDiscretValue
+                            "Mono",         // ShortDiscretValue
+                            "Mono");        // LongDiscretValue
 
     // Create a parameter panel for the user interface
-    m_ParameterFirstPanel.Init(&m_ParameterGainView,        // Parameter View 1
-                                &m_ParameterPanView,        // Parameter View 2
-                                &m_ParameterStereoModeView);// Parameter View 3
+    m_ParameterFirstPanel.Init(&m_ParameterGainView,      // Parameter View 1
+                              &m_ParameterPanView,        // Parameter View 2
+                              &m_ParameterStereoModeView);// Parameter View 3
 
     // Add the panel to the effect's menu
     m_Menu.addMenuItem(&m_ParameterFirstPanel, "First");
@@ -193,9 +193,8 @@ uint32_t cMyFirstEffect::getEffectID()
 // -----------------------------------------------------------------------------
 void cMyFirstEffect::onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff, bool Silence)
 {
-
     float Left = pIn->Left;
-    float Right = pOut->Right;
+    float Right = pIn->Right;
 
     // Test stereo mode
     if(m_ParameterStereoMode.getValue() == 1.0f){
@@ -204,7 +203,6 @@ void cMyFirstEffect::onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff
     	Right = (Right + Left) / 2.0f;
     }
 
-	// Apply gain to both channels
     pOut->Left  = Left  * m_LeftGain;
     pOut->Right = Right * m_RightGain;
 }
@@ -245,10 +243,7 @@ void cMyFirstEffect::onPanChange(DadDSP::cParameter* pPanParameter, uint32_t Dat
 	cMyFirstEffect* pThis = (cMyFirstEffect *) Data;
 
 	pThis->CalcGainLog();
-
 }
-
 #endif
-
 ```
 

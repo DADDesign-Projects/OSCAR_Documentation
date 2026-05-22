@@ -1,12 +1,12 @@
 ---
-title: Modify the code
+title: The code
 parent: Working With Parameters
 layout: default
 nav_order: 1
 ---
 
 
-# Modify the Code.
+# The Code
 
 {: .text-blue-300 }
 > We are going to modify the code from our previous tutorial [How to Develop Your First Effect](../1-First/0-FirstEffect.html) to add new functionalities.
@@ -35,40 +35,40 @@ We also add callback functions for `m_ParameterGain` and `m_ParameterPan`. These
 
 ```cpp
     // Initialize the Gain parameter
-    m_ParameterGain.Init(MY_FIRST_EFFECT_ID,   // Serialize ID
-                         50.0f,                // Default value
-                         0.0f,                 // Minimum value
-                         100.0f,               // Maximum value
-                         5.0f,                 // Fast increment
-                         1.0f,                 // Slow increment
-                         onGainChange,         // Callback function
-                         (uint32_t)this,       // Callback user data
-                         0.5f,                 // Transition time (seconds)
-                         20);                  // MIDI CC number
+    m_ParameterGain.Init(MY_FIRST_EFFECT_ID,// Serialize ID
+                         50.0f,             // Default value
+                         0.0f,              // Minimum value
+                         100.0f,            // Maximum value
+                         5.0f,              // Fast increment
+                         1.0f,              // Slow increment
+                         onGainChange,      // Callback function
+                         (uint32_t)this,    // Callback user data
+                         1.0f,              // Transition time (seconds)
+                         20);               // MIDI CC number
 
-    // Initialize the Pan parameter
-    m_ParameterPan.Init(MY_FIRST_EFFECT_ID,// Serialize ID
-                         0.0f,                 // Default value
-                         -100.0f,              // Minimum value
-                         100.0f,               // Maximum value
-                         5.0f,                 // Fast increment
-                         1.0f,                 // Slow increment
-                         onPanChange,      // Callback function
-						 (uint32_t)this,       // Callback user data
-                         0.5f,                 // Transition time (seconds)
-                         21);                  // MIDI CC number
+    // Initialize the Gain parameter
+    m_ParameterPan.Init(MY_FIRST_EFFECT_ID, // Serialize ID
+                         0.0f,              // Default value
+                         -100.0f,           // Minimum value
+                         100.0f,            // Maximum value
+                         5.0f,              // Fast increment
+                         1.0f,              // Slow increment
+                         onPanChange,       // Callback function
+                         (uint32_t)this,    // Callback user data
+                         1.0f,              // Transition time (seconds)
+                         21);               // MIDI CC number
 
-    // Initialize the Stereo Mode parameter
-    m_ParameterStereoMode.Init(MY_FIRST_EFFECT_ID,   // Serialize ID
-                         0.0f,                 // Default value
-                         0.0f,                 // Minimum value
-                         0.0f,                 // Maximum value
-                         1.0f,                 // Fast increment
-                         1.0f,                 // Slow increment
-                         nullptr,              // Callback function (not used here)
-                         0,                    // Callback user data
-                         0.0f,                 // Transition time (seconds)
-                         22);                  // MIDI CC number
+    // Initialize the Gain parameter
+    m_ParameterStereoMode.Init(MY_FIRST_EFFECT_ID,// Serialize ID
+                         0.0f,              // Default value
+                         0.0f,              // Minimum value
+                         0.0f,              // Maximum value
+                         1.0f,              // Fast increment
+                         1.0f,              // Slow increment
+                         nullptr,           // Callback function
+                         0,                 // Callback user data
+                         0.0f,              // Transition time (seconds)
+                         22);               // MIDI CC number
 ```
 
 ## Parameter Views
@@ -105,26 +105,32 @@ In `cMyFirstEffect.cpp`, we initialize the two new views in the `onInitialize` m
 Initializing discrete views requires an extra step: for every possible discrete value, we call `AddDiscreteValue` (in this case, "Stereo" and "Mono").
     
 ```cpp
-// Initialize the GUI view for the Panning parameter
-m_ParameterPanView.Init(&m_ParameterPan,               // Linked parameter
-                            "Bal.",                    // Short name
-                            "Balance",                 // Long name
-                            "%",                       // Unit (short)
-                            "percent");                // Unit (long)
+    // Initialize the GUI view for the parameter
+    m_ParameterGainView.Init(&m_ParameterGain,// Linked parameter
+                             "Gain",        // Short name
+                             "Gain",        // Long name
+                             "%",           // Unit (short)
+                             "percent");    // Unit (long)
 
-// Initialize the GUI view for the Stereo Mode parameter
-m_ParameterStereoModeView.Init(&m_ParameterStereoMode, // Linked parameter
-                            "Mode",                    // Short name
-                            "Stereo Mode");            // Long name
+    // Initialize the GUI view for the parameter
+    m_ParameterPanView.Init(&m_ParameterPan,// Linked parameter
+                             "Pan",         // Short name
+                             "Pan control", // Long name
+                             "%",           // Unit (short)
+                             "percent");    // Unit (long)
 
-// Add possible discrete values
-m_ParameterStereoModeView.AddDiscreteValue(
-                        "Stereo",           // Short Discrete Value
-                        "Stereo")           // Long Discrete Value
+    // Initialize the GUI view for the parameter
+    m_ParameterStereoModeView.Init(&m_ParameterStereoMode, // Linked parameter
+                             "Mode",        // Short name
+                             "Stereo Mode");// Long name
 
-m_ParameterStereoModeView.AddDiscreteValue(
-                        "Mono",             // Short Discrete Value
-                        "Mono");            // Long Discrete Value
+    m_ParameterStereoModeView.AddDiscreteValue(
+                            "Stereo",       // ShortDiscretValue
+                            "Stereo");      // LongDiscretValue
+
+    m_ParameterStereoModeView.AddDiscreteValue(
+                            "Mono",         // ShortDiscretValue
+                            "Mono");        // LongDiscretValue
 ```
 
 ## The Panel
@@ -202,7 +208,7 @@ In `cMyFirstEffect.h`, we declare these two new **static** methods to implement 
     // -------------------------------------------------------------------------
     // Pan callback
     // -------------------------------------------------------------------------
-    void static onPanChange(DadDSP::cParameter* pBalanceParameter, uint32_t Data);
+    void static onPanChange(DadDSP::cParameter* pPanParameter, uint32_t Data);
 ```
 
 ___

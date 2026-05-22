@@ -10,5 +10,5 @@ nav_order: 1
 {: .text-blue-300 }
 >This tutorial explains how to write and set up a basic audio effect in the FORGE framework.
 
-# Specification
+##  ➡️ Chapter Objectives
 The initial goal is modest: implement a variable volume controller.
