@@ -23,7 +23,7 @@ Before running any effect, all required resources must therefore be loaded into 
 `FlasherLoader` has two main functions:
 
 * **Flasher**  
-  In collaboration with `OSCAR_Flasher_Server`, the FlasherLoader receives files through the USB connection and stores them into the OSCAR platform's QSPI flash memory.
+  In collaboration with **OSCAR_Flasher_Server**, the FlasherLoader receives files through the USB connection and stores them into the OSCAR platform's QSPI flash memory.
 
 * **Loader**  
   When the OSCAR platform powers on, the FlasherLoader loads an executable ELF file into RAM and starts its execution.
@@ -32,13 +32,13 @@ Before running any effect, all required resources must therefore be loaded into 
 
 ## The Flasher Server
 
-`OSCAR_Flasher_Server` is a utility program that runs on your computer. It allows you to transfer files through a COM port over the USB connection linked to the OSCAR pedal.
+**OSCAR_Flasher_Server** is a utility program that runs on your computer. It allows you to transfer files through a COM port over the USB connection linked to the OSCAR pedal.
 
 ![](FlasherUI.png)
 
-{: .warning}
-> **Note:**  
-> The Flasher Server currently only works on Windows. Contributions are welcome to help port the utility to Linux or macOS. A Python implementation could also be a good alternative.
+For **Windows** users, an executable file named **OSCAR_FLASHER_Server.exe** is located in the `...\OSCAR_Workspace\OSCAR_P01_FlasherLoader\@FlasherServer\` directory.
+
+For **Linux** or **mac** users, the OSCAR_Flasher_Server utility is available as a Python version called **OSCAR_PY_Flasher_Server.py**. To install this version, please open the [DADDesign-Projects/OSCAR_PY_Flasher_Server](https://github.com/DADDesign-Projects/OSCAR_PY_Flasher_Server) repository and follow the instructions.
 
 ---
 
@@ -70,25 +70,25 @@ All other file types are transferred without modification.
 
 You must have:
 
-* A working OSCAR pedal with a compatible 12V power supply
-* `FlasherLoader` already programmed into the STM32 internal flash memory
+* A working OSCAR pedal with a compatible 12V power supply.
+* **FlasherLoader** already programmed into the STM32 internal flash memory.
+* For Linux or Mac users, **OSCAR_PY_Flasher_Server.py** must be installed.
 
 See tutorials:
 
 * [How to Compile FlasherLoader](../BuildFlasher/BuildFlasher.html)
 * [How to Program OSCAR](../ProgramOSCAR/ProgramOSCAR.html)
+* [DADDesign-Projects/OSCAR_PY_Flasher_Server](https://github.com/DADDesign-Projects/OSCAR_PY_Flasher_Server)
 
 ---
 
 ## Using FlasherLoader
+### Installation 
 
 ### Start the Flasher Server
 
 On your computer, launch:
-
-```text
-...\OSCAR_Workspace\OSCAR_P01_FlasherLoader\@FlasherServer\OSCAR_Flasher_Server.exe
-```
+**OSCAR_Flasher_Server.exe** or **OSCAR_PY_Flasher_Server.py** 
 
 Connect the OSCAR pedal to your computer using a USB cable. Power on the pedal while holding **Footswitch 1** pressed. This disables automatic booting and displays the FlasherLoader interface.
 

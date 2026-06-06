@@ -23,7 +23,7 @@ This tutorial explains how to compile the FlasherLoader utility.
 *   Git and STM32CubeIDE.
 *   The [OSCAR_P01_FlasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FlasherLoader) repository cloned, with the workspace properly configured in STM32CubeIDE.
 
-*See: [How to Create Your Workspace ](../Workspace/TutoWorkspace.html)*
+*See: [How to Create Your Workspace ](../1-Workspace/1-TutoWorkspace.html)*
 
 ***
 

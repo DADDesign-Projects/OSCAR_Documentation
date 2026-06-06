@@ -6,10 +6,10 @@ nav_order: 2
 ---
 # DadDrivers::cDryWet
 
-**Namespace:** DadDrivers::cDryWet
-**Files:** cDryWet.h / cDryWet.cpp
-**Directory:** DAD_FORGE/Drivers
-**Description:** Dry/wet mix control class with smooth crossfade for audio effects
+**Namespace:** DadDrivers::cDryWet  
+**Files:** cDryWet.h / cDryWet.cpp  
+**Directory:** DAD_FORGE/Drivers  
+**Description:** Dry/wet mix control class with smooth crossfade for audio effects  
 
 ---
 
@@ -19,6 +19,17 @@ The `cDryWet` class manages the dry/wet ratio control in audio processing, enabl
 
 {: .note}
 > The class inherits from `DadGUI::iGUI_EventListener`, an interface for intercepting GUI events. It implements the virtual methods `on_GUI_FastUpdate()` for fast redundant processing and `on_GUI_RT_Process()` for real-time audio loop operations.
+
+---
+
+## 🔗 External Dependencies
+
+### Global Variables and Driver Objects Used
+
+| Variable / Object | Type | Source | Role |
+|:---|:---|:---|:---|
+| `__SoftSPI` | `cSoftSPI*` | `extern in cDryWet.cpp` | Software SPI driver used to transmit gain values to the PGA2310/PGA2311 via the SPI bus. Transmits the calculated volume index to both channels (L/R) of the PGA converter. |
+| `__GUI_EventManager` | `cGUI_EventManager*` | `extern in GUI_Event.h` | Central GUI event manager that triggers `on_GUI_FastUpdate()` and `on_GUI_RT_Process()` callbacks during user interface updates. |
 
 ---
 
