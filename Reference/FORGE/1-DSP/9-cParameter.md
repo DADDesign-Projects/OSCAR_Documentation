@@ -60,10 +60,10 @@ No associated enumerations or structures.
 | `InitValue` | Initial parameter value. Will be automatically clamped to respect min/max bounds. |
 | `Min` | Minimum parameter value. Defines the lower bound of the valid range. |
 | `Max` | Maximum parameter value. Defines the upper bound of the valid range. |
-| `RapidIncrement` | Fast increment step size (e.g., 0.1). Used for fast manual adjustments via `Increment()`. |
-| `SlowIncrement` | Slow increment step size (e.g., 0.01). Used for fine adjustments or automatic control. |
+| `RapidIncrement` | Fast increment step size . Used for fast adjustments. |
+| `SlowIncrement` | Slow increment step size . Used for fine adjustments. |
 | `Callback` | Pointer to a callback function called when the value changes. Signature: `void(*)(cParameter*, uint32_t)`. Can be nullptr to disable. |
-| `CallbackUserData` | User data passed to the callback (generally an index or identifier). |
+| `CallbackUserData` | User data passed to the callback. |
 | `Slope` | Smoothing factor. Determines the speed of transition toward the target value. Gives the value in seconds to go from Min to Max value. |
 | `Control` | MIDI control number (CC number, 0-127). Value 0xFF disables MIDI control. The MIDI callback will be registered if a valid value is provided. |
 | **Return** | None (void) |

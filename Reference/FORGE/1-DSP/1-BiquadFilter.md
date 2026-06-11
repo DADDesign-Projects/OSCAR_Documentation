@@ -26,7 +26,8 @@ The `cBiQuad` class is a biquad digital filter implementation used for real-time
 > **Tip**  
 >To help configure and visualize filters, you can use the Python utility:
 >```text
->DAD_FORGE/@Python Utilities/BiQuad Visu/biquad.pyw
+>cd "....../DAD_FORGE/@Python Utilities/BiQuad Visu/"
+uv run biquad.py
 >```
 >
 >This tool displays the filter frequency response according to the selected parameters.

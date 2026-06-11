@@ -56,7 +56,7 @@ Most modern implementations are based on the famous **Robert Bristow-Johnson Biq
 To help configure and visualize filters, you can use the Python utility:
 
 ```text
-DAD_FORGE/@Python Utilities/BiQuad Visu/biquad.pyw
+DAD_FORGE/@Python Utilities/BiQuad Visu/
 ```
 
 This tool displays the filter frequency response according to the selected parameters.

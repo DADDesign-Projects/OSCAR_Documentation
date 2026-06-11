@@ -1,2 +1,5 @@
 {
+    "continue.enableNextEdit": false,
+    "continue.enableTabAutocomplete": false,
+    "continue.showInlineTip": false
 }

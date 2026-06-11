@@ -1,0 +1,10 @@
+// === LARGEUR SIDEBAR GAUCHE ===
+
+$nav-width: 320px;        // ← change ici (280px par défaut, essaie 320px ou 340px)
+$nav-width-md: 310px;     // pour les écrans un peu plus petits
+
+// Optionnel : élargir aussi le contenu principal pour éviter le chevauchement
+$content-width: 820px;    // augmente un peu (défaut ~800px)
+
+// Optionnel : élargir la zone totale
+$max-content-width: 1200px;
