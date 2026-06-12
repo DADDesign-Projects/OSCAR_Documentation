@@ -10,7 +10,7 @@ nav_order: 13
 **Namespace :** DadGUI::cPanelOfParameterView
 **Files :** cPanelOfParameters.h / cPanelOfParameters.cpp  
 **Directory :** DAD_FORGE/GUI/Components/  
-**Inheritance**: iUIComponent  
+**Inheritance**: `iUIComponent`  
 **Description :** Manages a panel composed of three parameter views and their respective rendering layers (static and dynamic).
 
 ---

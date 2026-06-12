@@ -9,6 +9,7 @@ nav_order: 4
 **Namespace :** DadGUI  
 **Files :** ParameterViews.h / ParameterViews.cpp  
 **Directory :** DAD_FORGE/GUI/Components  
+**Inheritance:** `cParameterNumView`  
 **Class :** DadGUI::cParameterNumNormalView  
 
 # cParameterNumNormalView - Standard Centered Layout

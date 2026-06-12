@@ -1,0 +1,227 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "DadGFX Namespace" {
+
+    ' --- Enumerations & Structs ---
+    enum ORIENTATION {
+        Portrait
+        Landscape
+    }
+
+    enum DRAW_MODE {
+        Blend
+        Overwrite
+    }
+
+    enum Rotation {
+        Degre_0
+        Degre_90
+        Degre_180
+        Degre_270
+    }
+
+    enum DAD_GFX_ERROR {
+        OK
+        DMA2D_Error
+        Size_Error
+        Memory_Error
+    }
+
+    struct sColor {
+        +m_B: uint8_t
+        +m_G: uint8_t
+        +m_R: uint8_t
+        +m_A: uint8_t
+        +set(R, G, B, A)
+        +operator uint32_t()
+    }
+
+    ' --- Commands for DMA FIFO ---
+    class Cmd_CASET {
+        +hiddenMethod()
+        +setData(x: uint16_t, dx: uint16_t)
+        #m_Commande: uint8_t
+        #m_Data: uint8_t[4]
+    }
+
+    class Cmd_RASET {
+        +setData(y: uint16_t, dy: uint16_t)
+        #m_Commande: uint8_t
+        #m_Data: uint8_t[4]
+    }
+
+    class Cmd_RAMWR {
+        +getData(): uint8_t*
+        #m_Commande: uint8_t
+        #m_Data: uint8_t[TAILLE_BLOC]
+    }
+
+    class sFIFO_Data {
+        +m_CmdCASET: Cmd_CASET[SIZE_FIFO]
+        +m_CmdRASET: Cmd_RASET[SIZE_FIFO]
+        +m_CmdRAWWR: Cmd_RAMWR[SIZE_FIFO]
+    }
+
+    ' --- Font Management ---
+    class cFont {
+        +cFont(pFont: const GFXCFont*)
+        +cFont(pFont: GFXBinFont*)
+        +getCharWidth(c: char): uint8_t
+        +getTextWidth(Text: const char*): uint16_t
+        +getHeight(): uint8_t
+        +getPosHeight(): int8_t
+        +getNegHeight(): int8_t
+        +getGFXfont(): const GFXCFont*
+        +getGFXglyph(): const GFXglyph*
+        +getGFXglyph(c: char): const GFXglyph*
+        +getBitmap(c: char): const uint8_t*
+        #Init(pFont: const GFXCFont*)
+        -m_pFont: const GFXCFont*
+        -m_pTable: GFXglyph*
+        -m_PosHeight: int8_t
+        -m_NegHeight: int8_t
+    }
+
+    ' --- Graphics Base ---
+    class cGFX {
+        +drawRect(x, y, w, h, stroke, color)
+        +drawFillRect(x, y, w, h, color)
+        +drawLine(x0, y0, x1, y1, color)
+        +drawCircle(cx, cy, r, color)
+        +drawFillCircle(cx, cy, r, color)
+        +drawArc(cx, cy, r, a1, a2, color)
+        +setCursor(x, y)
+        +setFont(font: cFont*)
+        +setTextFrontColor(color: sColor)
+        +setTextBackColor(color: sColor)
+        +drawChar(c: char)
+        +drawText(text: const char*)
+        #setPixel(x, y, color)*
+        #setRectangle(x, y, w, h, color)*
+        #fillRectWithBitmap(x, y, bitmap, w, h, fg, bg)*
+        -m_xCursor: uint16_t
+        -m_yCursor: uint16_t
+        -m_pFont: cFont*
+        -m_TextFrontColor: sColor
+        -m_TextBackColor: sColor
+    }
+hide members
+hide @unlinked
+
+    ' --- Layers ---
+    class cLayerBase {
+        +moveLayer(x: uint16_t, y: uint16_t)
+        +changeZOrder(z: uint8_t)
+        +getX(): uint16_t
+        +getY(): uint16_t
+        +getZ(): uint16_t
+        +getWith(): uint16_t
+        +getHeight(): uint16_t
+        #getFrame(): sColor*
+        #m_pDisplay: cDisplay*
+        #m_X: uint16_t
+        #m_Y: uint16_t
+        #m_Width: uint16_t
+        #m_Height: uint16_t
+        #m_Z: uint8_t
+        #m_pImageLayerFrame: const uint8_t*
+    }
+
+    class cLayer {
+        +eraseLayer(color: sColor)
+        +setMode(mode: DRAW_MODE)
+        #init(display, frame, y, x, w, h, z)
+        #setPixel(x, y, color)
+        #setRectangle(x, y, w, h, color)
+        #fillRectWithBitmap(x, y, bitmap, w, h, fg, bg)
+        -m_Mode: DRAW_MODE
+    }
+
+    class cImageLayer {
+        +setFrame(frame: uint8_t)
+        #init(display, frame, y, x, w, h, z, nbFrame)
+        -m_NbFrame: uint8_t
+        -m_pLayerFrameStart: const uint8_t*
+        -m_FrameSize: uint32_t
+    }
+
+    ' --- Display Controller ---
+    class cDisplay {
+        +init(phspi, pFIFO, pDirty)
+        +addLayer(frame, x, y, w, h, z)
+        +addLayer(frame, x, y, w, h, z, nb)
+        +setOrientation(r: Rotation)
+        +flush()
+        +getWith(): uint16_t
+        +getHeight(): uint16_t
+        #Blend2Bloc(...)
+        -invalidateRect(x0, y0, x1, y1)
+        -invalidatePoint(x, y)
+        -invalidateAll()
+        -validateAll()
+        -switchOrientation(orient: ORIENTATION)
+        -isFull(): bool
+        -isBusy(): bool
+        -AddBloc(x, y): bool
+        -sendDMA(): bool
+        -static sendCASETDMAData(ctx)
+        -static sendRASETDMACmd(ctx)
+        -static sendRASETDMAData(ctx)
+        -static sendRAWWRDMACmd(ctx)
+        -static sendRAWWRDMAData(ctx)
+        -static endDMA(ctx)
+        -m_Width: uint16_t
+        -m_Height: uint16_t
+        -m_TabLayers: std::vector<cLayerBase*>
+        -m_LayersChange: uint8_t
+        -m_Orientation: ORIENTATION
+        -m_DirtyBlocks: uint8_t[NB][NB]
+        -m_pFIFO: sFIFO_Data*
+        -m_FIFO_in: uint16_t
+        -m_FIFO_out: uint16_t
+        -m_FIFO_NbElements: uint16_t
+        -m_Busy: bool
+    }
+
+    ' --- Hardware Interface ---
+    class TFT_SPI {
+        +Init_TFT_SPI(phspi: SPI_HandleTypeDef*)
+        +setTFTRotation(r: Rotation)
+        +SendCommand(cmd: uint8_t)
+        +SendData(data: uint8_t)
+        +SendData(buff: uint8_t*, size: size_t)
+        +SendDMACommand(cmd, cb, ctx)
+        +SendDMAData(buff, size, cb, ctx)
+        +setDC()
+        +resetDC()
+        +setRST()
+        +resetRST()
+        #Initialise()
+        #m_phspi: SPI_HandleTypeDef*
+    }
+
+}
+
+' --- Relationships ---
+
+' Héritage
+TFT_SPI <|-- cDisplay : "# (Protected)"
+cLayerBase <|-- cLayer : "public"
+cGFX <|-- cLayer : "public"
+cLayerBase <|-- cImageLayer : "public"
+
+' Composition / Agrégation
+cDisplay *-- sFIFO_Data : contient
+sFIFO_Data *-- Cmd_CASET
+sFIFO_Data *-- Cmd_RASET
+sFIFO_Data *-- Cmd_RAMWR
+
+cDisplay o-- cLayerBase : gère (std::vector)
+
+' Associations (utilisation)
+cLayer --> cDisplay : utilise
+cImageLayer --> cDisplay : utilise
+cGFX --> cFont : utilise
+
+@enduml

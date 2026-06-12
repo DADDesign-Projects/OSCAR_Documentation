@@ -1,0 +1,83 @@
+@startuml
+skinparam Style strictuml
+skinparam SequenceMessageInArrowColor #blue
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+
+title Asynchronous DMA/SPI Transfer Sequence (State Machine)
+
+participant "Application" as App
+participant "cDisplay" as Disp
+box "Interrupt Context" #LightYellow
+    participant "Interrupt" as IRQ
+end box
+participant "Hardware\n(DMA/SPI)" as HW
+
+== Initialization Phase ==
+
+App -> Disp: flush()
+activate Disp
+Disp -> Disp: Calculate dirty blocks
+Disp -> Disp: AddBloc(x, y) (Fill FIFO)
+
+== Callback Chain (Single Data Block) ==
+
+note over Disp: CPU is free here\n(while DMA is working)
+
+Disp -> HW: SendDMACommand(CASET)
+activate HW
+HW -->> IRQ: DMA Transfer Complete (Callback)
+deactivate HW
+
+IRQ -> Disp: sendCASETDMAData(context)
+activate Disp
+Disp -> HW: SendDMAData(CASET Data)
+activate HW
+HW -->> IRQ: DMA Transfer Complete (Callback)
+deactivate HW
+
+IRQ -> Disp: sendRASETDMACmd(context)
+activate Disp
+Disp -> HW: SendDMACommand(RASET)
+activate HW
+HW -->> IRQ: DMA Transfer Complete (Callback)
+deactivate HW
+
+IRQ -> Disp: sendRASETDMAData(context)
+activate Disp
+Disp -> HW: SendDMAData(RASET Data)
+activate HW
+HW -->> IRQ: DMA Transfer Complete (Callback)
+deactivate HW
+
+IRQ -> Disp: sendRAWWRDMACmd(context)
+activate Disp
+Disp -> HW: SendDMACommand(RAMWR)
+activate HW
+HW -->> IRQ: DMA Transfer Complete (Callback)
+deactivate HW
+
+IRQ -> Disp: sendRAWWRDMAData(context)
+activate Disp
+Disp -> HW: SendDMAData(Pixel Data)
+activate HW
+HW -->> IRQ: DMA Transfer Complete (Callback)
+deactivate HW
+
+IRQ -> Disp: endDMA(context)
+activate Disp
+
+== Sequence End ==
+
+alt If FIFO is not empty
+    Disp -> Disp: m_FIFO_out++
+    Disp -> Disp: sendDMA() (Restart cycle)
+    note right: Cycle restarts
+else If FIFO is empty
+    Disp -> Disp: m_Busy = false
+    note right: CPU is free
+end
+
+deactivate Disp
+
+@enduml

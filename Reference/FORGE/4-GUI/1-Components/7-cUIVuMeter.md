@@ -10,6 +10,7 @@ nav_order: 8
 **Namespace:** DadGUI::cUIVuMeter  
 **Files:** cUIVuMeter.h / cUIVuMeter.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance**: `iGUI_EventListener`, `iUIComponent`  
 **Description:** Stereo VU-meter display component for real-time visualization of audio levels (Input and Output).
 
 ---

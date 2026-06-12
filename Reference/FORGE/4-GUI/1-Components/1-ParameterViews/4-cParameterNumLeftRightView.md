@@ -8,6 +8,7 @@ nav_order: 5
 **Namespace :** DadGUI  
 **Files :** ParameterViews.h / ParameterViews.cpp  
 **Directory :** DAD_FORGE/GUI/Components  
+**Inheritance:** `cParameterNumView`  
 **Class :** DadGUI::cParameterNumLeftRightView  
 
 # cParameterNumLeftRightView - Left/Right type Stereo Layout

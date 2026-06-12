@@ -9,7 +9,7 @@ nav_order: 14
 **Namespace :** DadGUI::cPanelOfSystemView  
 **Files :** cPanelOfSystemView.h / cPanelOfSystemView.cpp  
 **Directory :** DAD_FORGE/GUI/Components/  
-**Inheritance**: cPanelOfParameterView  
+**Inheritance**: `cPanelOfParameterView`  
 **Description :** Panel for managing system parameters including color themes and MIDI channels.  
 
 ---

@@ -1,0 +1,204 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+package "DadGUI" {
+
+    interface "iGUI_EventListener" as iGUI_EventListener {
+        +on_GUI_RT_Process()
+        +on_GUI_RT_ProcessIn(AudioBuffer*)
+        +on_GUI_RT_ProcessOut(AudioBuffer*)
+        +on_GUI_Update()
+        +on_GUI_FastUpdate()
+    }
+
+    interface "iUIComponent" as iUIComponent {
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+    interface "iGUIProcessObject" as iGUIProcessObject {
+        +GUIProcessIn(AudioBuffer*)
+        +GUIProcessOut(AudioBuffer*)
+    }
+
+    interface "iRTObject" as iRTObject {
+        +RtProcess()
+    }
+
+    class "cPanelOfParameterView" as cPanelOfParameterView {
+        +Init(cParameterView*, cParameterView*, cParameterView*)
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+    class "cParameterView" as cParameterView {
+    }
+
+    class "cParameterDiscretView" as cParameterDiscretView {
+    }
+
+    class "cParameterNumLeftRightView" as cParameterNumLeftRightView {
+    }
+
+    class "cPanelOfParameters" as cPanelOfParameters {
+        +Init(cParameterView*, cParameterView*, cParameterView*)
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+    class "cPanelOfSystemView" as cPanelOfSystemView {
+        +Initialize(uint32_t)
+        +Update()
+        +ColorCallback(cParameter*, uint32_t)
+        +MIDICallback(cParameter*, uint32_t)
+    }
+
+    class "cPanelOfTone" as cPanelOfTone {
+        +Initialize(uint32_t)
+        +Update()
+        +Process(AudioBuffer*, AudioBuffer*)
+        +BassChange(cParameter*, uint32_t)
+        +MidChange(cParameter*, uint32_t)
+        +TrebleChange(cParameter*, uint32_t)
+    }
+
+    class "cPanelOfEffectChoice" as cPanelOfEffectChoice {
+        +Initialize(uint32_t, Callback, uint32_t)
+        +addEffect(char*, char*)
+        +getEffect()
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+    class "cInfoView" as cInfoView {
+        +Init()
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+        +ShowView(bool, uint8_t, string)
+    }
+
+    class "cUIMemory" as cUIMemory {
+        +Init(uint32_t)
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+        +setSerializeID(uint32_t)
+    }
+
+    class "cUIMenu" as cUIMenu {
+        +Init()
+        +addMenuItem(iUIComponent*, string, cUIMenu*)
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+        +drawTab()
+        +setItem(uint8_t)
+        +GetItem()
+    }
+
+    class "cUIParameter" as cUIParameter {
+    }
+
+    class "cParameterInfoView" as cParameterInfoView {
+        +Init()
+        +ShowParamView(string, string)
+        +HideParamView()
+        +on_GUI_Update()
+        +ParameterChange(void*, uint32_t)
+    }
+
+    class "cBypassOnOffManager" as cBypassOnOffManager {
+        +Initialize(uint8_t*)
+        +on_GUI_FastUpdate()
+        +getState()
+    }
+
+    class "cMemoryManager" as cMemoryManager {
+        +Init()
+        +MIDI_PresetUp_CallBack(uint8_t, uint8_t, uint32_t)
+        +MIDI_PresetDown_CallBack(uint8_t, uint8_t, uint32_t)
+        +MIDI_ProgramChange_CallBack(uint8_t, uint32_t)
+        +RestoreSlot(uint8_t)
+        +SaveSlot(uint8_t, uint32_t)
+        +EraseSlot(uint8_t)
+        +isLoadable(uint8_t)
+        +isErasable(uint8_t)
+        +IncrementSlot(int8_t)
+        +getActiveSlot()
+        +IsInRestoreProcess()
+    }
+
+    struct "MenuItem" as MenuItem {
+        +Name: string
+        +pItem: iUIComponent*
+        +pNextMenu: cUIMenu*
+    }
+
+}
+
+package "DadUtilities" {
+    class "cPaletteBuilder" as cPaletteBuilder {
+        +InitPalette(sColorPalette*)
+        +ParseBuffer()
+        +ProcessByte(uint8_t)
+        +Clear()
+        +Reset()
+        +HexToValue(char)
+        +ParseHexColor()
+        +StoreColor()
+        +getPalette()
+        +IsChangedPalette()
+    }
+}
+
+package "DadDSP" {
+    class "cParameter" as cParameter {
+    }
+    class "cBiQuad" as cBiQuad {
+    }
+}
+
+package "DadPersistentStorage" {
+    class "cSerializedObject" as cSerializedObject {
+    }
+}
+
+cPanelOfEffectChoice --|> cPanelOfParameterView
+cPanelOfSystemView --|> cPanelOfParameterView
+cPanelOfTone --|> cPanelOfParameterView
+cPanelOfTone --|> iGUI_EventListener
+
+cPanelOfParameterView --|> iUIComponent
+cPanelOfParameters --|> iUIComponent
+cPanelOfEffectChoice --|> iUIComponent
+cInfoView --|> iUIComponent
+cUIMemory --|> iUIComponent
+cUIMenu --|> iUIComponent
+cUIParameter --|> iGUI_EventListener
+cUIParameter --|> cSerializedObject
+cUIParameter --|> cParameter
+cParameterInfoView --|> iGUI_EventListener
+cBypassOnOffManager --|> iGUI_EventListener
+
+cUIMenu *-- MenuItem
+MenuItem o-- iUIComponent
+MenuItem o-- cUIMenu
+
+cPanelOfTone --> cParameterView : manages
+cPanelOfTone --> cBiQuad : uses
+cPanelOfParameters --> cParameterView : contains
+
+@enduml

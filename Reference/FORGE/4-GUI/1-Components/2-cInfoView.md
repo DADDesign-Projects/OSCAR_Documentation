@@ -10,6 +10,7 @@ nav_order: 3
 **Namespace:** DadGUI::cInfoView  
 **Files:** cInfoView.h / cInfoView.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance:** `DadGUI::iUIComponent`  
 **Description:** Provides a status area displaying the selected preset number, its modification status (dirty), and the system state (ON/OFF/BYPASS). Updates automatically.
 
 ---

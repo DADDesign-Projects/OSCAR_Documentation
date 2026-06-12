@@ -10,6 +10,7 @@ nav_order: 9
 **Namespace:** DadGUI::cBypassOnOffManager  
 **Files:** cBypassOnOffManager.h / cBypassOnOffManager.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance**: `iGUI_EventListener`  
 **Description:** Manages state transitions between Bypass, Off, and On for audio effects, including fade-in/fade-out management.
 
 ---

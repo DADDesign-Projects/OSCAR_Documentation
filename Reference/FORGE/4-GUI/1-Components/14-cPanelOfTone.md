@@ -7,9 +7,9 @@ nav_order: 15
 # DadGUI::cPanelOfTone
 
 **Namespace :** DadGUI::cPanelOfTone  
-**Fichiers :** cPanelOfTone.h / cPanelOfTone.cpp  
-**Repertoire :** DAD_FORGE/GUI/Components/  
-**Heritage**: cPanelOfParameterView, iGUI_EventListener  
+**Files :**  cPanelOfTone.h / cPanelOfTone.cpp  
+**Directory :** DAD_FORGE/GUI/Components/  
+**Inheritance**: `cPanelOfParameterView`, `iGUI_EventListener`  
 **Description :** Panel for managing tone output audio (bass, mid, treble).
 
 ---

@@ -10,6 +10,7 @@ nav_order: 7
 **Namespace:** DadGUI::cUIParameter  
 **Files:** cUIParameter.h / cUIParameter.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance**: `iGUI_EventListener`, `DadPersistentStorage::cSerializedObject`, `DadDSP::cParameter`    
 **Description:** Integration of the `DadDSP::cUIParameter` class into the GUI system.
 
 ---

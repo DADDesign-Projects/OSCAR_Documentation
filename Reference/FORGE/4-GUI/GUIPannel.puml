@@ -1,0 +1,61 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+
+package "DadGUI" {
+
+    class "cPanelOfSystemView" as cPanelOfSystemView {
+        +Initialize(uint32_t)
+        +Update()
+        +ColorCallback(cParameter*, uint32_t)
+        +MIDICallback(cParameter*, uint32_t)
+    }
+
+    class "cPanelOfTone" as cPanelOfTone {
+        +Initialize(uint32_t)
+        +Update()
+        +Process(AudioBuffer*, AudioBuffer*)
+        +BassChange(cParameter*, uint32_t)
+        +MidChange(cParameter*, uint32_t)
+        +TrebleChange(cParameter*, uint32_t)
+    }
+
+    class "cPanelOfEffectChoice" as cPanelOfEffectChoice {
+        +Initialize(uint32_t, Callback, uint32_t)
+        +addEffect(char*, char*)
+        +getEffect()
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+ 
+    class "cPanelOfParameterView" as cPanelOfParameterView {
+        +Init(cParameterView*, cParameterView*, cParameterView*)
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+    class "iUIComponent" as iUIComponent {
+        +Activate()
+        +Deactivate()
+        +Update()
+        +Redraw()
+    }
+
+    class "iGUI_EventListener" as iGUI_EventListener {
+        +on_GUI_RT_Process()
+
+    }
+}
+
+cPanelOfParameterView --|> iUIComponent
+cPanelOfEffectChoice --|> cPanelOfParameterView
+cPanelOfSystemView --|> cPanelOfParameterView
+cPanelOfTone --|> cPanelOfParameterView
+cPanelOfTone --|> iGUI_EventListener
+
+@enduml

@@ -10,6 +10,7 @@ nav_order: 5
 **Namespace:** DadGUI::cUIMemory  
 **Files:** cUIMemory.h / cUIMemory.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance:** `DadGUI::cPanelOfParameterView`, `DadGUI::iUIComponent`  
 **Description:** Manages the user interface for preset management (Save, Load, Delete).
 
 ---

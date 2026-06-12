@@ -9,6 +9,7 @@ nav_order: 2
 **Namespace :** DadGUI  
 **Files:** SwitchManager.h / SwitchManager.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance:** `iGUI_EventListener`  
 **Class :** DadGUI::cTapTempoMemChange  
 
 ---

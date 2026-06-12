@@ -10,6 +10,7 @@ nav_order: 4
 **Namespace:** DadGUI::cParameterInfoView  
 **Files:** cParameterInfoView.h / cParameterInfoView.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance:** `cPanelOfParameterView`, `iGUI_EventListener`   
 **Description:** Manages the temporary display of parameter information (name and value) as a popup window superimposed on the InfoView Area.
 
 ---

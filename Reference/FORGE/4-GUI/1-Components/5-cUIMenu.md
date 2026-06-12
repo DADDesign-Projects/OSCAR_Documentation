@@ -10,6 +10,7 @@ nav_order: 6
 **Namespace:** DadGUI::cUIMenu  
 **Files:** cUIMenu.h / cUIMenu.cpp  
 **Directory:** DAD_FORGE/GUI/Components/  
+**Inheritance**: `iUIComponent`  
 **Description:** Manages the main menu display, navigation between items, and activation of sub-menus.
 
 ---

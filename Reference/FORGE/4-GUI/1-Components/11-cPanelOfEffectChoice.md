@@ -10,7 +10,7 @@ nav_order: 12
 **Namespace :** DadGUI::cPanelOfEffectChoice  
 **Files :** cPanelOfEffectChoice.h / cPanelOfEffectChoice.cpp  
 **Directory :** DAD_FORGE/GUI/Components/  
-**Inheritance**: cPanelOfParameterView  
+**Inheritance**: `cPanelOfParameterView`  
 **Description :** User interface panel for effect selection within a multi-effect framework.
 
 ---

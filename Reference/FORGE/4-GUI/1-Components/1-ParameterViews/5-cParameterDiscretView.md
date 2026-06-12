@@ -9,6 +9,7 @@ nav_order: 6
 **Namespace :** DadGUI  
 **Files :** ParameterViews.h / ParameterViews.cpp  
 **Directory :** DAD_FORGE/GUI/Components  
+**Inheritance:** `cParameterView`  
 **Class :** DadGUI::cParameterDiscretView  
 
 ---
