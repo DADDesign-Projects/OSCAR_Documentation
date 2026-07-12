@@ -63,7 +63,7 @@ It displays data that must remain visible under all circumstances: the operating
 | `__pActivePalette` | `const sColorPalette*` | Pointer to the currently active palette |
 | `__MempActivePalette` | `const sColorPalette*` | Pointer to the previous palette for change detection |
 | `__MemoryManager` | `cMemoryManager` | Global instance of the memory manager |
-| `__GUI_EventManager` | `cGUI_EventManager` | Graphics event manager |
+| `__GUI_EventManager` | `cGUI_EventManager` | GUI event manager |
 | `__Midi` | `cMIDI` | MIDI control interface |
 | `__FlasherStorage` | `cFlasherStorage` | Flash memory access for resources (fonts) |
 | `__OnOffCmd` | `eOnOffCmd` | Current system state (On, Off, ByPass) |
