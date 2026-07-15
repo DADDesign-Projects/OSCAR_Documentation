@@ -12,11 +12,11 @@ This tutorial explains the purpose of the `FlasherLoader` utility and how to use
 
 ## Why FlasherLoader Exists
 
-OSCAR executable programs require resource files such as fonts, images, samples, and other assets. Without these resources, the effects cannot operate correctly.
+Executable FORGE programs require resource files such as fonts, images, samples, and other assets. Without these resources, the effects cannot operate correctly.
 
 Before running any effect, all required resources must therefore be loaded into the external QSPI flash memory of the OSCAR platform.
 
----
+
 
 ## The FlasherLoader
 
@@ -28,19 +28,20 @@ Before running any effect, all required resources must therefore be loaded into 
 * **Loader**  
   When the OSCAR platform powers on, the FlasherLoader loads an executable ELF file into RAM and starts its execution.
 
----
+
 
 ## The Flasher Server
 
-**OSCAR_Flasher_Server** is a utility program that runs on your computer. It allows you to transfer files through a COM port over the USB connection linked to the OSCAR pedal.
+**OSCAR_Flasher_Server** is a utility program that runs on your computer. It allows you to transfer files through a COM port over the USB connection linked to the OSCAR or PENDA pedal.
 
 ![](FlasherUI.png)
 
-For **Windows** users, an executable file named **OSCAR_FLASHER_Server.exe** is located in the `...\OSCAR_Workspace\OSCAR_P01_FlasherLoader\@FlasherServer\` directory.
+For **Windows** users, an executable file named **OSCAR_FLASHER_Server.exe** is located in directory:
+* for OSCAR `...\FORGE_Workspace\OSCAR_P01_FlasherLoader\@FlasherServer\`,
+* for PENDA `...\FORGE_Workspace\PENDA_FlasherLoader\@FlasherServer\`.
 
 For **Linux** or **mac** users, the OSCAR_Flasher_Server utility is available as a Python version called **OSCAR_PY_Flasher_Server.py**. To install this version, please open the [DADDesign-Projects/OSCAR_PY_Flasher_Server](https://github.com/DADDesign-Projects/OSCAR_PY_Flasher_Server) repository and follow the instructions.
 
----
 
 ## Preparation of Files by the Server Processor
 
@@ -54,7 +55,7 @@ Supported formats include:
 * GIF
 * and more...
 
-Image files are automatically converted to RAW format, making them directly compatible with the `DAD_FORGE / STM_GFX` graphics library.
+Image files are automatically converted to RAW format, making them directly compatible with the `DAD_FORGE/STM_GFX2` graphics library.
 
 **ELF Effect Files (Executables)**
 ELF executables undergo processing: they are parsed, processed, and reformatted for easy use by the OSCAR Loader.
@@ -62,15 +63,13 @@ ELF executables undergo processing: they are parsed, processed, and reformatted 
 **Other Files**
 All other file types are transferred without modification.
 
-
-
 ---
 
 ## Prerequisites
 
 You must have:
 
-* A working OSCAR pedal with a compatible 12V power supply.
+* A working OSCAR (12V) PENDA(9v) pedal with a compatible power supply.
 * **FlasherLoader** already programmed into the STM32 internal flash memory.
 * For Linux or Mac users, **OSCAR_PY_Flasher_Server.py** must be installed.
 
@@ -80,7 +79,6 @@ See tutorials:
 * [How to Program OSCAR](../ProgramOSCAR/ProgramOSCAR.html)
 * [DADDesign-Projects/OSCAR_PY_Flasher_Server](https://github.com/DADDesign-Projects/OSCAR_PY_Flasher_Server)
 
----
 
 ## Using FlasherLoader
 ### Installation 
@@ -90,11 +88,11 @@ See tutorials:
 On your computer, launch:
 **OSCAR_Flasher_Server.exe** or **OSCAR_PY_Flasher_Server.py** 
 
-Connect the OSCAR pedal to your computer using a USB cable. Power on the pedal while holding **Footswitch 1** pressed. This disables automatic booting and displays the FlasherLoader interface.
+Connect the OSCAR/PENDA pedal to your computer using a USB cable. Power on the pedal while holding **Footswitch 1** pressed. This disables automatic booting and displays the FlasherLoader interface.
 
 ---
 
-## OSCAR FlasherLoader Interface
+## OSCAR/PENDA FlasherLoader Interface
 The interface contains two sections:
 ![](FlasherLoader.png)
 
@@ -129,35 +127,20 @@ OK : OSCAR is detected on COMxx
 
 ## Adding Resource Files
 
-OSCAR effects require at minimum all resource files located in:
+FORGES effects require at minimum all resource files located in `../DAD_FORGE/@Ressources`
 
-```text
-...\OSCAR_Workspace\Software_OSCAR_P01A01\Ressources
-```
+![](Ressources.png)
 
-### Add Binary Resources
-
-1. Click **Add File**
-2. Open:
-
-```text
-...\OSCAR_Workspace\Software_OSCAR_P01A01\Ressources\bin
-```
-
+1. in Flasher Server Click **Add File**
+2. Open: .../DAD_FORGE/@Ressources/bin
 3. Select all files
 4. Click **Open**
 
 The files will appear in the flashing list.
 
-### Add Image Resources
 
 1. Click **Add File**
-2. Open:
-
-```text
-...\OSCAR_Workspace\Software_OSCAR_P01A01\Ressources\Images
-```
-
+2. Open:.../DAD_FORGE/@Ressources/Images
 3. Select all files
 4. Click **Open**
 
@@ -178,30 +161,28 @@ See tutorial: [How to Compile Effects](../BuildEffects/BuildEffects.html)
 Add the executable files:
 
 ### Delay
-
-```text
-....\OSCAR_Workspace\Software_OSCAR_P01A01\_Delay4Loader\Delay4L.elf
-```
+1. Click **Add File**
+2. Open:.../_Delay4Loader
+3. Select file Delay4L.elf 
+4. Click **Open**
 
 ### Reverb
-
-```text
-....\OSCAR_Workspace\Software_OSCAR_P01A01\_Reverb4Loader\Reverb4L.elf
-```
+1. Click **Add File**
+2. Open:.../_Reverb4Loader
+3. Select file Reverb4L.elf
+4. Click **Open**
 
 ### Modulations
-
-```text
-....\OSCAR_Workspace\Software_OSCAR_P01A01\_Modulations4Loader\Modulations4L.elf
-```
-
----
+1. Click **Add File**
+2. Open:.../_Modulations4Loader
+3. Select file Modulations4L.elf 
+4. Click **Open**
 
 ## Flashing the Files
 
 Click the **Flash** button to start the transfer.
 
-On the OSCAR pedal:
+On the OSCAR/PENDA pedal:
 
 1. All existing files in QSPI flash memory are erased
 2. File transfer and storage begin
@@ -211,13 +192,8 @@ On the OSCAR pedal:
 Once all files are written:
 
 * The FlasherLoader verifies the data
-* The screen displays:
+* The screen displays: **Flash OK**
 
-```text
-Flash OK
-```
-
----
 
 ## OFSF Files
 
@@ -260,7 +236,7 @@ You must hold **Footswitch 1** during power-up. The executable launch is cancell
 
 ## 🎉Congratulations
 
-You have successfully programmed your OSCAR pedal with its effects.
+You have successfully programmed your OSCAR/PENDA pedal with its effects.
 
 🎸 Now it is time to make music :)
 
@@ -269,7 +245,7 @@ Naturally, you will probably want to:
 * Modify existing effects
 * Create completely new ones
 
-The OSCAR ecosystem and the DAD_FORGE library were designed to simplify development by handling hardware complexity and providing many helpers:
+The DAD_FORGE library were designed to simplify development by handling hardware complexity and providing many helpers:
 
 * Graphics (GFX)
 * GUI tools

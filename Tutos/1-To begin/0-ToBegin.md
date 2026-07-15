@@ -6,12 +6,10 @@ nav_order: 1
 ---
 # To Begin
 
-This chapter outlines the essential steps required to:
-
-* Import source files for OSCAR software projects.
-* Set up a complete development environment.
-* Compile the projects.
-* Flash the executables onto the OSCAR hardware.  
-
-
-Upon completion of these tutorials, you will be able to program the OSCAR effect pedal's hardware and enjoy a high-end functional effect capable of generating: delay, reverberation, or various modulations (chorus, flanger, tremolo, etc.).
+This chapter guides you through the key steps to launch your first project with FORGE:
+- Import the project source files.
+- Set up a complete development environment.
+- Compile the projects.
+- Flash the executables to the hardware.
+  
+By the end of these tutorials, you will be able to program the OSCAR or PENDA effect pedal and enjoy a fully functional high-end effect — delay, reverb, chorus, flanger, tremolo, and many other modulations.

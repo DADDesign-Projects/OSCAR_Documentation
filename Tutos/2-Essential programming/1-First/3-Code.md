@@ -7,12 +7,12 @@ nav_order: 3
 
 # Code Implementation
 
-Open `Software_OSCAR_P01A01/DAD_FORGE/Effects/MyFirstEffect/Src/cMyFirstEffect.cpp` and enter the following code:
+Open `.../MyFirstEffect/Src/cMyFirstEffect.cpp` and enter the following code:
 
 ```cpp
 #include "EffectsConfig.h"
 
-#ifdef MY_FIRST_EFFECT
+#if ACTIVE_EFFECT == MY_FIRST_EFFECT
 #include "cMyFirstEffect.h"
 
 // Unique effect identifier (32-bit)
@@ -20,7 +20,7 @@ constexpr uint32_t MY_FIRST_EFFECT_ID = BUILD_ID('M', 'F', 'E', '1');
 
 // -----------------------------------------------------------------------------
 // Method: onInitialize
-// Description: Called once when the effect is loaded. Used to initialize 
+// Description: Called once when the effect is loaded. Used to initialize
 //              parameters, GUI elements, and internal DSP objects.
 // -----------------------------------------------------------------------------
 void cMyFirstEffect::onInitialize()
@@ -64,10 +64,10 @@ uint32_t cMyFirstEffect::getEffectID()
 
 // -----------------------------------------------------------------------------
 // Method: onProcess
-// Description: Main audio processing function. Called continuously for 
+// Description: Main audio processing function. Called continuously for
 //              every audio buffer.
 // -----------------------------------------------------------------------------
-void cMyFirstEffect::onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff, bool Silence)
+void cMyFirstEffect::onProcess(AudioBuffer *pIn, AudioBuffer *pOut, DadGUI::eEffectState_t State, bool Silence)
 {
     // Get current gain value (converted from percentage to multiplier)
     float gainValue = m_ParameterGain.getValue() / 100.0f;

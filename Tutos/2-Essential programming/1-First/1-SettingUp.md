@@ -16,75 +16,101 @@ nav_order: 1
 
 1. Open **STM32CubeIDE** with `OSCAR_Workspace` as your workspace.
 
-2. Select the project `Software_OSCAR_P01A01`.
+2. Select the project `Software_OSCAR_P01A01` or `PENDA_Software`.
 
-3. Create a directory named `MyFirstEffect` inside `Software_OSCAR_P01A01\DAD_FORGE\Effects`:
-   - Right-click on the `Effects` folder → **New / Folder**.
+3. Create a directory named `MyFirstEffect` inside root :
+   - Right-click on the `Software_OSCAR_P01A01` or `PENDA_Software` folder → **New / Source Folder**.
+  
 ![](CreateFolder.png)
 
-4. Inside `MyFirstEffect`, create two subdirectories: `Inc` and `Src`.
+</BR>
+
+![](CreateFolder2.png)
+
+1. Inside `MyFirstEffect`, create two subdirectories: `Inc` and `Src`.
    
-5. Select the `Inc` directory and add it to the include path:
+2. Select the `Inc` directory and add it to the include path:
    - Right-click on `Inc` → **Add/Remove Include Path**, then check all build configurations.
 ![](AddRemove.png)
 ![](SelectConfigurations.png)
 
-6. Create a new header file `cMyFirstEffect.h` inside `Inc`:
+## Create sources files
+1. Create a new header file `cMyFirstEffect.h` inside `Inc`:
    - Right-click on `Inc` → **New / Header File**.
 ![](NewFile.png)
 
-7. Create a new source file `cMyFirstEffect.cpp` inside `Src`:
+1. Create a new source file `cMyFirstEffect.cpp` inside `Src`:
    - Right-click on `Src` → **New / Source File**.
 
----
 
-# Adding Our Effect to the FORGE Effects List
+## Adding Our Effect to the FORGE Effects List
 
-Open the following file: `Software_OSCAR_P01A01\DAD_FORGE\Effects\@Config\EffectsConfig.h`
+Open and edit the configuration file `...@Config\Inc\EffectsConfig.h` as follows:
 
-Modify the "EFFECT CONFIGURATION" section by commenting out the line `#define TEMPLATE_EFFECT` and adding the following line `#define MY_FIRST_EFFECT`
-
-This tells FORGE to compile our effect.
 
 ```cpp
-// ======================= EFFECT CONFIGURATION ===========================
-#ifdef DEBUG_RELEASE_EFFECT
-//#define DELAY_EFFECT
-//#define MODULATIONS_EFFECT
-//#define REVERB_EFFECT
-//#define TEMPLATE_EFFECT
-//#define TEMPLATE_MULTI_MODE_EFFECT
-#define MY_FIRST_EFFECT
-#endif
-```
-
-In the 'EFFECT CONFIGURATION CHECK' section, append ` && !defined(MY_FIRST_EFFECT)` to the condition of the second if statement.
-
-```cpp
-// ====================== EFFECT CONFIGURATION CHECK ======================
-// Ensures exactly one effect is selected during compilation.
+#pragma once
+//****************************************************************************
+// File: EffectsConfig.h
 //
+// 
+// Copyright (c) 2025 Dad Design.
+//****************************************************************************
+#include "ID.h"
+#include "stdint.h"
 
-#if defined(DELAY_EFFECT) + defined(MODULATIONS_EFFECT) + defined(REVERB_EFFECT) + defined(TEMPLATE_EFFECT) + defined(TEMPLATE_MULTI_MODE_EFFECT)> 1
-#error "ERROR: Multiple effects are defined at the same time! Only one effect must be active."
+#ifndef ACTIVE_EFFECT
+// ==========================================================================
+// EFFECT SELECTION
+// --------------------------------------------------------------------------
+// Select the active effect by setting ACTIVE_EFFECT to one of the values
+// defined below. Only ONE effect can be active at a time.
+// ==========================================================================
+
+#define ACTIVE_EFFECT MY_FIRST_EFFECT
+//#define ACTIVE_EFFECT  EFFECT_DELAY
+//#define ACTIVE_EFFECT EFFECT_REVERB
+//#define ACTIVE_EFFECT EFFECT_MODULATIONS
+//#define ACTIVE_EFFECT EFFECT_TEMPLATE
+//#define ACTIVE_EFFECT EFFECT_TEMPLATE_MULTI_MODE
+
+
+// --- Available effect identifiers (do not modify) -----------------------
+#endif
+#define MY_FIRST_EFFECT                 6
+#define EFFECT_DELAY                    1
+#define EFFECT_MODULATIONS              2
+#define EFFECT_REVERB                   3
+#define EFFECT_TEMPLATE                 4
+#define EFFECT_TEMPLATE_MULTI_MODE      5
+
+
+// ==========================================================================
+// EFFECT INCLUDE DISPATCH
+// --------------------------------------------------------------------------
+// Includes the header corresponding to the active effect.
+// ==========================================================================
+#if ACTIVE_EFFECT == MY_FIRST_EFFECT
+   #include "cMyFirstEffect.h"
+
+#elif ACTIVE_EFFECT == EFFECT_DELAY
+    #include "Delay.h"
+
+#elif ACTIVE_EFFECT == EFFECT_MODULATIONS
+    #include "cModulations.h"
+
+#elif ACTIVE_EFFECT == EFFECT_REVERB
+    #include "Reverb.h"
+
+#elif ACTIVE_EFFECT == EFFECT_TEMPLATE
+    #include "cTemplateEffect.h"
+
+#elif ACTIVE_EFFECT == EFFECT_TEMPLATE_MULTI_MODE
+    #include "TemplateMultiModeEffect.h"
+
+#else
+    #error "ACTIVE_EFFECT is not defined or does not match any known effect."
 #endif
 
-#if !defined(DELAY_EFFECT) && !defined(MODULATIONS_EFFECT) && !defined(REVERB_EFFECT) && !defined(TEMPLATE_EFFECT) && !defined(TEMPLATE_MULTI_MODE_EFFECT) && !defined(MY_FIRST_EFFECT)
-#error "ERROR: No effect is defined! Please define exactly one of: DELAY_EFFECT, MODULATIONS_EFFECT or REVERB_EFFECT."
-#endif
-```
-
-
-At the end of the file, add the following code to provide FORGE with the information required to run the effect:
-
-```cpp
-// Configuring the First effect
-#ifdef MY_FIRST_EFFECT
-#include "cMyFirstEffect.h"
-#define DECLARE_EFFECT cMyFirstEffect  __Effect
-#define EFFECT_NAME "My First Effect"
-#define EFFECT_VERSION "Version 1.0"
-#define EFFECT_SPLATCH_SCREEN "Template.png"
-constexpr uint32_t EFFECT_BUILD = BUILD_ID('F', 'R', 'I', '1');
-#endif
+//***End of file**************************************************************
 ```

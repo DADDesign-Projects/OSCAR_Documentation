@@ -6,7 +6,7 @@ nav_order: 2
 
 # 📘 Tutorials
 
-This section contains tutorials based on the principle of **"how to do a specific task"**.
+This section offers a series of practical tutorials designed to guide developers in learning and mastering the FORGE framework. Each tutorial covers a key step — from initial setup to deployment — showing how to design, develop, and implement real-world projects..
 
 ## 🛠️ Required Tools
 

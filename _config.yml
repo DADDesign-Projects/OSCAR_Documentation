@@ -2,8 +2,8 @@
 remote_theme: just-the-docs/just-the-docs
 
 # Configuration générale de votre site
-title: "OSCAR Documentation"
-description: "OSCAR Project Documentation"
+title: "FORGE Documentation"
+description: "Documentation for the FORGE framework and projects built with it."
 baseurl: "/OSCAR_Documentation"
 url: "https://daddesign-projects.github.io"
 

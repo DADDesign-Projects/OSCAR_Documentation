@@ -24,39 +24,59 @@ Before starting, ensure that the following tools are installed on your computer:
 
 ## Creating the Workspace Directory
 
-Create a working directory for STM32CubeIDE projects, for example, named **`OSCAR_Workspace`**.
+Create a working directory for STM32CubeIDE projects, for example, named **`FORGE_Workspace`**.
 
 Run the following commands:
 
 ```bash
-mkdir OSCAR_Workspace
-cd OSCAR_Workspace
+mkdir FORGE_Workspace
+cd FORGE_Workspace
 ```
 
 ***
 
-## Cloning the OSCAR Effect Development Framework
+## Clone the Project
 
-Clone the repository 'Software_OSCAR_P01A01', which contains the OSCAR P01A01 Software effect development framework:
+We will retrieve the repository containing the source files and configurations required by STM32CubeIDE to build the executable for your effect.
 
+For the OSCAR hardware target, use the following command:
 ```bash
 git clone --recurse-submodules https://github.com/DADDesign-Projects/Software_OSCAR_P01A01
 ```
 
-This repository provides the essential framework and examples used to develop audio effects for the OSCAR P01A01 hardware platform.
+For the PENDA hardware target, use the following command:
+```bash
+git clone --recurse-submodules https://github.com/DADDesign-Projects/PENDA-Software
+```
+The repository is now available in your workspace:
 
-***
+OSCAR:
+```
+FORGE_Workspace
+   |___PENDA-Software
+```
+PENDA:
+```
+FORGE_Workspace
+   |___PENDA-Software
+```
 
-## Cloning the OSCAR Flasher Loader
+## Cloning Flasher Loader
 
-Next, clone the OSCAR flasher/bootloader project:
+Next, clone the flasher/bootloader project:
 
+OSCAR:
 ```bash
 git clone --recurse-submodules https://github.com/DADDesign-Projects/OSCAR_P01_FLasherLoader
 ```
 
+PENDA:
+```bash
+git clone --recurse-submodules https://github.com/DADDesign-Projects/PENDA_FLasherLoader
+```
+
 This project includes:
-* The flasher utility, used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR P01 board.
+* The flasher utility, used to transfer resource files (images, fonts, ELF executables, samples, etc.) into the external QSPI flash memory of the OSCAR or PENDA board.
 * The bootloader, which is used by the pedal to launch the selected executable from the external QSPI flash memory upon power-up.
 
 ***
@@ -70,7 +90,8 @@ click **Other...** in the `File/Switch Workspace` menu.
 
    Whether opening directly or after clicking on the `File/Switch Workspace` menu, a dialog box will appear asking for your desired workspace location:
     * Click on **Browse**.
-    * Select the directory you just created (`OSCAR_Workspace` in this tutorial).
+    * Select the directory you just created (`FORGE_Workspace` in this tutorial).
+  
 ![](OpenIDEWorkspace.png)
 
 ***
@@ -89,7 +110,7 @@ click **Other...** in the `File/Switch Workspace` menu.
 
 ### 3. In the **Import** dialog box, select the **root directory**:
 * Click on **Browse** 🔍.
-* Select your workspace directory (`OSCAR_Workspace` in this example).
+* Select your workspace directory (`FORGE_Workspace` in this example).
 * Click on **Select All** ✅.
 * Finally, click the **Finish** button.
 
@@ -100,7 +121,7 @@ click **Other...** in the `File/Switch Workspace` menu.
 
 ## ✅ Your Workspace is now configured
 
-You are ready to start working with OSCAR projects.  
+You are ready to start working with FORGE projects.  
 👉 See the next tutorial to compile your first effect  
 
 ![](OSCAR_Workspace.png)

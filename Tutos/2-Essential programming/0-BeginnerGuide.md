@@ -7,7 +7,7 @@ nav_order: 2
 # Essential Guide to Developing Guitar Effects
 
 {: .text-blue-300 }
->This chapter illustrates, through practical examples, the fundamental principles of implementing the FORGE library for developing guitar effects within the OSCAR ecosystem.
+>This chapter illustrates, through practical examples, the fundamental principles of implementing the FORGE library for developing guitar effects.
 
 ## Prerequisites
 This chapter’s tutorial requires the following:

@@ -21,9 +21,12 @@ This tutorial explains how to compile the FlasherLoader utility.
 **You must have the following installed and configured:**
 
 *   Git and STM32CubeIDE.
-*   The [OSCAR_P01_FlasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FlasherLoader) repository cloned, with the workspace properly configured in STM32CubeIDE.
+*   The [OSCAR_P01_FlasherLoader](https://github.com/DADDesign-Projects/OSCAR_P01_FlasherLoader) or [PENDA_FlasherLoader](https://github.com/DADDesign-Projects/PENDA_FlasherLoader) repository cloned, with the workspace properly configured in STM32CubeIDE.
 
 *See: [How to Create Your Workspace ](../1-Workspace/1-TutoWorkspace.html)*
+
+{: .highlight}
+>**Note: The rest of this tutorial will be carried out as an example on the OSCAR pedal and its software. For the PENDA pedal, the described actions are strictly identical, unless otherwise specified.*
 
 ***
 

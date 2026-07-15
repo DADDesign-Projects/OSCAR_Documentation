@@ -9,11 +9,17 @@ nav_order: 2
 
 ## Declaration
 
-Open `Software_OSCAR_P01A01/DAD_FORGE/Effects/MyFirstEffect/Inc/cMyFirstEffect.h` and enter the following declaration:
+Open `.../MyFirstEffect/Inc/cMyFirstEffect.h` and enter the following declaration:
 
 ```cpp
 #pragma once
 #include "cEffectBase.h"
+
+#define DECLARE_EFFECT cMyFirstEffect __Effect
+#define EFFECT_NAME "MyFirstEffect"
+#define EFFECT_VERSION "Version 1.0"
+#define EFFECT_SPLATCH_SCREEN "Template.png"
+constexpr uint32_t EFFECT_BUILD =   BUILD_ID('F', 'I', 'R', '1');
 
 class cMyFirstEffect : public DadEffect::cEffectBase {
 public:
@@ -35,7 +41,7 @@ public:
     // -------------------------------------------------------------------------
     // Audio processing function - processes one input/output audio buffer
     // -------------------------------------------------------------------------
-    void onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff, bool Silence) override;
+    void onProcess(AudioBuffer *pIn, AudioBuffer *pOut, DadGUI::eEffectState_t State, bool Silence) override;
 
 protected:
     // =========================================================================
@@ -57,11 +63,22 @@ protected:
     // -------------------------------------------------------------------------
     DadGUI::cPanelOfParameterView       m_ParameterFirstPanel;   // Demo panel containing parameter views
 };
+
 ```
 
----
+
 
 ## Class Overview
+
+### **Declarations bloc (mandatory)**
+
+| Directive | Description |
+|-----------|-------------|
+| `#define DECLARE_EFFECT DadEffect::cMyFirstEffect __Effect` | Used by FORGE to determine which effect to execute. |
+| `#define EFFECT_NAME "MyFirstEffect"` | Name of the effect. |
+| `#define EFFECT_VERSION "Version 1.0"` | Version of the effect. |
+| `#define EFFECT_SPLASH_SCREEN "Template.png"` | Defines the image displayed when the effect starts up. |
+| `constexpr uint32_t EFFECT_BUILD = BUILD_ID('F', 'I', 'R', '1');` | Build identifier used to check whether persistent data is still valid. |
 
 ### **Inheritance**
 
@@ -96,7 +113,7 @@ This method is called by the system to retrieve the unique identifier of the eff
 
 ---
 
-### **onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff, bool Silence)**
+### **onProcess(AudioBuffer *pIn, AudioBuffer *pOut, DadGUI::eEffectState_t State, bool Silence)**
 
 This method is called for every audio sample.
 
@@ -104,7 +121,7 @@ This method is called for every audio sample.
 |-----------|-------------|
 | `pIn`     | Pointer to the input buffer, containing left and right channel samples. |
 | `pOut`    | Pointer to the stereo output buffer. |
-| `OnOff`   | Current state of the pedal: `ByPass`, `Off`, or `On`. |
+| `State`   | Current state of the pedal: `ByPass`, `Off`, or `On`. |
 | `Silence` | Indicates whether the input is silent. |
 
 Your processed audio must be written here.
