@@ -38,3 +38,6 @@ plugins:
 
 extra_css:
   - assets/css/custom.css
+
+favicon:
+  - assets/images/favicon.ico 

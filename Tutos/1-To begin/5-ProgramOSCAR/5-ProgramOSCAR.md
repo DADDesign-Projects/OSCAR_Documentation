@@ -1,5 +1,5 @@
 ---
-title: How to Program OSCAR
+title: How to Program OSCAR/PENDA
 parent: To Begin
 layout: default
 nav_order: 4

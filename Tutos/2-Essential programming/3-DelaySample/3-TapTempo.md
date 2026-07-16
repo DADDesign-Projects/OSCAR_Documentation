@@ -6,8 +6,8 @@ nav_order: 3
 ---
 
 # How to add a Tap Tempo
-{: .text-blue-300 }
 
+{: .text-blue-300 }
 > This chapter explains how to implement a tap tempo function in your effect.
 
 ## Tap Tempo
@@ -16,7 +16,7 @@ The **tap tempo** feature allows the user to adjust a parameter of an effect by 
 
 Instead of calculating precise values, the musician can intuitively set the timing by tapping at the desired speed. The system measures the time between taps and automatically applies that tempo to the chosen parameter.
 
-In the **OSCAR/FORGE** ecosystem, tap tempo is managed by the `DadGUI::cTapTempoMemChange` class. In our example, this functionality is already available through the `DadEffect::cEffectBase` class, from which our effect inherits.
+In the **FORGE** ecosystem, tap tempo is managed by the `DadGUI::cTapTempoMemChange` class. In our example, this functionality is already available through the `DadEffect::cEffectBase` class, from which our effect inherits.
 
 ### How to enable Tap Tempo
 

@@ -17,6 +17,13 @@ nav_order: 2
 ```cpp
 #pragma once
 #include "cEffectBase.h"
+ 
+#define DECLARE_EFFECT cMyFirstEffect __Effect
+#define EFFECT_NAME "MyFirstEffect"
+#define EFFECT_VERSION "Version 1.0"
+#define EFFECT_SPLATCH_SCREEN "Template.png"
+constexpr uint32_t EFFECT_BUILD =   BUILD_ID('F', 'I', 'R', '1');
+
 
 class cMyFirstEffect : public DadEffect::cEffectBase {
 public:
@@ -38,7 +45,7 @@ public:
     // -------------------------------------------------------------------------
     // Audio processing function - processes one input/output audio buffer
     // -------------------------------------------------------------------------
-    void onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff, bool Silence) override;
+    void onProcess(AudioBuffer *pIn, AudioBuffer *pOut, DadGUI::eEffectState_t State, bool Silence) override;
 
     // -------------------------------------------------------------------------
     // Gain callback
@@ -77,8 +84,8 @@ protected:
     // -------------------------------------------------------------------------
     // Panel declarations
     // -------------------------------------------------------------------------
-    DadGUI::cPanelOfParameterView       m_ParameterFirstPanel;        // Demo panel containing 
-    
+    DadGUI::cPanelOfParameterView       m_ParameterFirstPanel;        // Demo panel containing
+
     // -------------------------------------------------------------------------
     // Variables
     // -------------------------------------------------------------------------
@@ -92,7 +99,7 @@ protected:
 ```cpp
 #include "EffectsConfig.h"
 
-#ifdef MY_FIRST_EFFECT
+#if ACTIVE_EFFECT == MY_FIRST_EFFECT
 #include "cMyFirstEffect.h"
 
 // Unique effect identifier (32-bit)
@@ -191,7 +198,7 @@ uint32_t cMyFirstEffect::getEffectID()
 // Description: Main audio processing function. Called continuously for
 //              every audio buffer.
 // -----------------------------------------------------------------------------
-void cMyFirstEffect::onProcess(AudioBuffer *pIn, AudioBuffer *pOut, eOnOff OnOff, bool Silence)
+void cMyFirstEffect::onProcess(AudioBuffer *pIn, AudioBuffer *pOut, DadGUI::eEffectState_t State, bool Silence)
 {
     float Left = pIn->Left;
     float Right = pIn->Right;

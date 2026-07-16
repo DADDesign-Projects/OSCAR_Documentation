@@ -11,9 +11,9 @@ url: "https://daddesign-projects.github.io"
 search_enabled: true
 
 # Options d'en-tête (liens vers votre GitHub)
-aux_links:
-  "See the code on GitHub":
-    - "//github.com/daddesign-projects/OSCAR_Documentation/"
+# aux_links:
+#  "See the code on GitHub":
+#    - "//github.com/daddesign-projects/OSCAR_Documentation/"
 
 # Pied de page : lien pour éditer la page sur GitHub
 gh_edit_link: true

@@ -51,7 +51,7 @@ Most modern implementations are based on the famous **Robert Bristow-Johnson Biq
 * **All-Pass (APF)**  
   Keeps the same amplitude for all frequencies but changes phase response. Useful for phasing effects and phase correction.
 
-## biquad.pyw
+## biquad.py
 
 To help configure and visualize filters, you can use the Python utility:
 

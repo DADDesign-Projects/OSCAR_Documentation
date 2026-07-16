@@ -7,7 +7,7 @@ nav_order: 4
 
 # Conclusions
 
-This tutorial introduced the main concepts involved in developing an audio effect with the OSCAR/FORGE framework. We covered:
+This tutorial introduced the main concepts involved in developing an audio effect with the OSCAR/PENDA & FORGE framework. We covered:
 
 * parameters and their different views;
 * panels and their integration into menus;
