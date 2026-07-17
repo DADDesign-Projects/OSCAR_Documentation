@@ -1,14 +1,19 @@
 ---
-title: USB‑MIDI
+title: _MIDI
 parent: Drivers
 layout: default
-nav_order: 10
+nav_order: 11
 ---
-# USB-MIDI
-This chapter presents the implementation of the MIDI protocol over USB for the STM32H7xx.
-The driver follows the classic architecture of the STM32 USB Device Stack from STMicroelectronics (based on usbd_core), to which a custom MIDI class has been added.
+# _MID
+The **_MIDI directory** contains the high-level drivers required for the operation of the MIDI interface over UART and USB.
 
-## Driver Architecture
+It consists of the following components:
+
+* **cMidi**: main class handling MIDI communication management. It groups together the reception callbacks for data coming from UART and USB, a MIDI message parser, as well as a registration and callback system allowing various clients to receive the MIDI commands that concern them.
+
+* **MIDI USB Driver**: implementation of the USB MIDI protocol for STM32H7xx microcontrollers. This driver is built upon the standard architecture of STMicroelectronics' USB Device stack, based on usbd_core, to which a custom USB MIDI class has been added. This approach ensures seamless integration with the other USB classes of the ST stack while guaranteeing compatibility with standard USB MIDI devices.
+
+## MIDI/USB Driver Architecture
 
 | Layer | File | Functional Role |
 |:---|:---|:---|

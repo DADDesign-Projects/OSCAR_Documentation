@@ -1,6 +1,6 @@
 ---
 title: MX_USB_MIDI_DEVICE_Init
-parent: USB‑MIDI
+parent: _MIDI
 layout: default
 nav_order: 3
 ---

@@ -1,6 +1,6 @@
 ---
 title: USBD_Midi_Desc
-parent: USB‑MIDI
+parent: _MIDI
 layout: default
 nav_order: 4
 ---

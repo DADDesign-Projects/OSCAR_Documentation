@@ -1,8 +1,8 @@
 ---
 title: USBD_MIDI_If
-parent: USB‑MIDI
+parent: _MIDI
 layout: default
-nav_order: 1
+nav_order: 2
 ---
 
 # USBD_MIDI_If
