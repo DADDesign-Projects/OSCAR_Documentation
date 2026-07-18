@@ -24,6 +24,7 @@ To simplify theme creation, FORGE includes a Python utility named **ColorConfigu
 ```text
 DAD_FORGE/@Python Utilities/PaletteBuilder
 ```
+![](ColorConfigurator.png)
 
 Before using this utility, the USB interface must be configured in **COM mode** by editing the file:
 
