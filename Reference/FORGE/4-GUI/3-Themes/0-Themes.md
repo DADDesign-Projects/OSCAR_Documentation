@@ -17,8 +17,6 @@ The `__ColorPalette[NB_PALETTE]` array contains all the color palettes (themes) 
 
 FORGE provides a set of predefined themes by default. However, users can easily create and use their own themes by defining a custom `UserPalette.h` configuration file.
 
----
-
 ## Palette Builder
 
 To simplify theme creation, FORGE includes a Python utility named **ColorConfigurator.py**, located in:
@@ -79,8 +77,6 @@ sColorPalette __ColorPalette[NB_PALETTE] =
 #include "PaleBlue.hpp"
 };
 ```
-
----
 
 # Themes Manager
 
